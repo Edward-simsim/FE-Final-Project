@@ -32,5 +32,12 @@
       <button id="nav_create" type="button" class="nav_button" (click)="nav_to_create()">
        create post
       </button>
+      <main >
+        <!-- *ngFor="let question of questionList" -->
+        <app-question
+       
+        ></app-question>
+      </main>
   </div>
-  
+  <!-- [question]="question"
+  (newGetArticleEvent)="getQuestions()" -->
