@@ -1,20 +1,29 @@
 <div class="container">
-  
-    <div class="content_up">
-     <div class="content_up_nav">
+  <div class="content_up">
+    <div class="content_up_nav">
       <div class="content_up_button">
-          <button id="categories" type="button" class="nav_button" (click)="test()">
-            Categories
-          </button>
-          <button id="all_posts" type="button" class="nav_button" (click)="test()">
-            All posts
-          </button>
-          <button id="my_posts" type="button" class="nav_button" (click)="test()">
-            My Posts
-          </button>
-        </div>
-        <div class="content_up_search">
-          <input
+        <button
+          id="categories"
+          type="button"
+          class="nav_button"
+          (click)="test()"
+        >
+          Categories
+        </button>
+        <button
+          id="all_posts"
+          type="button"
+          class="nav_button"
+          (click)="test()"
+        >
+          All posts
+        </button>
+        <button id="my_posts" type="button" class="nav_button" (click)="test()">
+          My Posts
+        </button>
+      </div>
+      <div class="content_up_search">
+        <input
           type="text"
           class="input"
           name="search"
@@ -22,22 +31,38 @@
           placeholder="search"
         />
         <i class="fa-solid fa-gear"></i>
-        </div>
-        
-     </div>
-      <div class="content_img">
-          <p class="content_img_big">Questions and Answers</p>
-          <p class="content_img_small">Welcome! Have a look around and join the discussions.</p>
       </div>
-      <button id="nav_create" type="button" class="nav_button" (click)="nav_to_create()">
-       create post
-      </button>
-      <main >
-        <!-- *ngFor="let question of questionList" -->
-        <app-question
-       
-        ></app-question>
-      </main>
+    </div>
+    <div class="content_img">
+      <p class="content_img_big">Questions and Answers</p>
+      <p class="content_img_small">
+        Welcome! Have a look around and join the discussions.
+      </p>
+    </div>
+   <div class="create_button_container">
+    <button
+    type="button"
+    class="btn btn-outline-primary"
+    (click)="nav_to_create()"
+  >
+    Create post
+  </button>
+   </div>
+    <main>
+      <app-question
+        *ngFor="let question of visibleQuestions"
+        [question]="question"
+        (newGetArticleEvent)="getQuestions()"
+      ></app-question>
+    </main>
+    <button
+      id="load_more"
+      type="button"
+      class="nav_button"
+      *ngIf="visibleQuestions.length < questionList.length"
+      (click)="loadMoreQuestions()"
+    >
+      Load More
+    </button>
   </div>
-  <!-- [question]="question"
-  (newGetArticleEvent)="getQuestions()" -->
+</div>

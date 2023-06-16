@@ -1,9 +1,14 @@
 <div class="create_container">
-  <form [formGroup]="questionForm">
+  <h2>What is your question</h2>
+  <form class="input_container" [formGroup]="questionForm">
     <div class="form-row align-items-center">
       <div class="col-auto my-1">
         <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="category">
+        <select
+          class="custom-select mr-sm-2"
+          id="inlineFormCustomSelect"
+          formControlName="category"
+        >
           <option disabled selected>Select a category</option>
           <option value="1">SQL</option>
           <option value="2">C++</option>
@@ -11,19 +16,35 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
+    <div class="create_input">
       <input
         type="text"
-        class="form-control"
+        id="title"
+        placeholder="userEmail"
+        formControlName="userEmail"
+      />
+      <input
+        type="text"
         id="title"
         placeholder="Give this post a title"
         formControlName="title"
       />
+      <textarea
+        class="description"
+        id="title"
+        placeholder="Write your post here"
+        formControlName="description"
+      ></textarea>
     </div>
-    <div class="input-group">
-      <textarea class="form-control" aria-label="With textarea" placeholder="Write your post here" formControlName="description"></textarea>
-    </div>
-    <button type="button" class="btn btn-outline-primary">Cancel</button>
-    <button type="button" class="btn btn-outline-primary" (click)="addQuestion()">Publish</button>
   </form>
+  <div class="create_buttons">
+    <button type="button" class="btn btn-outline-primary">Cancel</button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="addQuestion()"
+    >
+      Publish
+    </button>
+  </div>
 </div>
