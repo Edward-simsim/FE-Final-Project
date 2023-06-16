@@ -5,7 +5,7 @@ export class Question {
       id?:number;
       title:string='';
       description:string='';
-    //   creationDate:LocalDateTime.now='';
+    date:string='';
     userEmail:string='';
-    category: string = '';
+    category: number=0;
 }

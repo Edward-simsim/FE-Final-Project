@@ -1,35 +1,41 @@
-
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
 import { Question } from "src/app/models/question";
 import { QuestionService } from "src/app/service/question.service";
+import { CategoryPipe } from "src/app/pipes/category.pipe";
+
 @Component({
-  selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css']
+  selector: "app-question",
+  templateUrl: "./question.component.html",
+  styleUrls: ["./question.component.css"],
 })
 export class QuestionComponent {
+  constructor(
+    private questionService: QuestionService,
+    private router: Router
+  ) {}
 
-  constructor(private questionService: QuestionService, private router:Router) {}
+  @Input() question: Question = new Question();
 
-  @Input() question: Question= new Question();
+  truncateText(text: string, maxRows: number, maxCharacters: number): string {
+   
+    const lines = text.split("\n");
+    let truncatedText = "";
 
-  seeArticleDetails() {
-    this.router.navigateByUrl(`/details/${this.question.id}`)
+    for (let i = 0; i < maxRows && i < lines.length; i++) {
+      const line = lines[i];
+
+      if (line.length > maxCharacters) {
+        truncatedText += line.substring(0, maxCharacters) + "...";
+      } else {
+        truncatedText += line;
+      }
+
+      if (i < maxRows - 1) {
+        truncatedText += "\n";
+      }
+    }
+
+    return truncatedText;
   }
-
-
-
-
-
-
-
-
 }

@@ -9,7 +9,7 @@ import { Question } from 'src/app/models/question';
   styleUrls: ['./create-page.component.css']
 })
 export class CreatePageComponent implements OnInit {
-  questionForm!: FormGroup; // Add the '!' symbol to indicate it will be initialized later
+  questionForm!: FormGroup; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +34,8 @@ export class CreatePageComponent implements OnInit {
       category: this.questionForm.value.category || "",
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
-      userEmail: this.questionForm.value.userEmail || "" // Replace with the actual user's email
+      userEmail: this.questionForm.value.userEmail || "",
+      date:this.questionForm.value.date || ""
     };
 
     this.questionService.addQuestion(question).subscribe(

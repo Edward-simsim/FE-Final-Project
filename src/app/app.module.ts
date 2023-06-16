@@ -12,6 +12,8 @@ import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { QuestionComponent } from './components/question/question.component';
 import { QuestionService } from './service/question.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryPipe } from './pipes/category.pipe';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,16 +23,19 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     ForumPageComponent,
     CreatePageComponent,
-    QuestionComponent
+    QuestionComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [QuestionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [QuestionComponent]
 })
 export class AppModule { }

@@ -1,5 +1,22 @@
-
-<article>
-    <h1>{{question.description}}</h1>
-
-</article>
+<div class="question_container">
+  <div class="questionC_up">
+    <p class="question_user">{{ question.userEmail }}</p>
+    <p class="question_date">{{ question.date }}</p>
+    <p class="question_title">{{ question.title }}</p>
+    <p class="question_category">{{ question.category | category }}</p>
+    <div class="question_description">
+      {{ truncateText(question.description, 4, 400) }}
+    </div>
+  </div>
+  <hr />
+  <div class="questionC_down">
+    <div class="like">
+      <i class="fa-regular fa-thumbs-up"></i>
+      <p>like</p>
+    </div>
+    <div class="right">
+      <i class="fa-regular fa-message"><p>2</p></i
+      ><i class="fa-solid fa-eye"><p>3</p></i>
+    </div>
+  </div>
+</div>

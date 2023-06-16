@@ -1,53 +1,82 @@
-.container {
-    padding-top: 40px;
-    width:1020px;
-    align-items: center;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+.create_container {
+  padding-top: 40px;
+  width: 1020px;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 .nav {
-    width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-height: 80px;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 80px;
 }
-.nav_buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 50px;
+.nav_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 50px;
 }
 
 .nav_button {
-    background-color: white;
-    border:0;
-    height: 50px;
+  background-color: white;
+  border: 0;
+  height: 50px;
 }
 .nav_right {
-    display: flex;
-
+  display: flex;
 }
 .nav_profile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.nav_profile p{
-    margin: 0 10px;
-    font-size: 19px;
- }
+.nav_profile p {
+  margin: 0 10px;
+  font-size: 19px;
+}
 
 .fa-bell {
-    font-size: 23px;
+  font-size: 23px;
 }
 h1 {
-    font-size: 35px;
+  font-size: 35px;
 }
-.create_container {
-    width:1020px;
-    margin: auto;
-
+form {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 300px;
+}
+.create_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  margin: 7px;
+}
+input {
+  border: none;
+  outline: none;
+  margin-bottom: 5px;
+}
+.create_input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.input_container {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding: 20px 50px;
+}
+.description {
+  height: 150px;
+  resize: none;
+  overflow-y: auto;
+  border: none;
+  outline: none;
 }
