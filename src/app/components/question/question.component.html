@@ -1,11 +1,12 @@
-<div class="question_container">
+<!doctype html>
+<div class="question_container" (click)="navclick()">
   <div class="questionC_up">
     <p class="question_user">{{ question.userEmail }}</p>
     <p class="question_date">{{ question.date }}</p>
     <p class="question_title">{{ question.title }}</p>
-    <p class="question_category">{{ question.category | category }}</p>
+    <p class="question_category">{{ question.category}}</p>
     <div class="question_description">
-      {{ truncateText(question.description, 4, 400) }}
+      {{ truncateText(question.description, 4, 380) }}
     </div>
   </div>
   <hr />

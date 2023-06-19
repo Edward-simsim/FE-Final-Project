@@ -3,19 +3,40 @@
     <h1>Skills Overflow</h1>
     <div class="nav_right">
       <div class="nav_buttons">
-        <button id="home" type="button" class="nav_button" (click)="test()">
+        <button
+          id="home"
+          type="button"
+          class="nav_button"
+          [class.active]="activePage === 'home'"
+          (click)="navigate_home()"
+        >
           Home
         </button>
-        <button id="about" type="button" class="nav_button" (click)="test()">
+        <button
+          id="about"
+          type="button"
+          class="nav_button"
+          [class.active]="activePage === 'about'"
+          (click)="navigate_about()"
+        >
           About
         </button>
-        <button id="faq" type="button" class="nav_button" (click)="test()">
-          FAQ
+        <button
+          id="forum"
+          type="button"
+          class="nav_button"
+          [class.active]="activePage === 'forum'"
+          (click)="navigate_forum()"
+        >
+          Forum
         </button>
-        <button id="forum" type="button" class="nav_button" (click)="test()">
-          forum
-        </button>
-        <button id="members" type="button" class="nav_button" (click)="test()">
+        <button
+          id="members"
+          type="button"
+          class="nav_button"
+          [class.active]="activePage === 'members'"
+          (click)="navigate_members()"
+        >
           Members
         </button>
       </div>
@@ -28,3 +49,4 @@
   </nav>
 </div>
 <router-outlet></router-outlet>
+<footer><h4>Skills Overflow</h4></footer>
