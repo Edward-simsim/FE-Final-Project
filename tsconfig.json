@@ -31,6 +31,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/app/pipes/category.pipe.ts"
+    "path/to/answer.ts"
   ]
 }

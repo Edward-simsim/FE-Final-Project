@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <div class="container">
   <div class="content_up">
     <div class="content_up_nav">
@@ -6,7 +7,8 @@
           id="categories"
           type="button"
           class="nav_button"
-          (click)="test()"
+          [class.active]="activeButtonId === 'categories'"
+          (click)="showCategory()"
         >
           Categories
         </button>
@@ -14,11 +16,19 @@
           id="all_posts"
           type="button"
           class="nav_button"
-          (click)="test()"
+          [class.active]="activeButtonId === 'allPosts'"
+          (click)="showAllPosts()"
         >
           All posts
         </button>
-        <button id="my_posts" type="button" class="nav_button" (click)="test()">
+        <button
+          id="my_posts"
+          type="button"
+          class="nav_button"
+          #myPostsButton
+          [class.active]="activeButtonId === 'myPosts'"
+          (click)="showMyPosts()"
+        >
           My Posts
         </button>
       </div>
@@ -39,30 +49,55 @@
         Welcome! Have a look around and join the discussions.
       </p>
     </div>
-   <div class="create_button_container">
-    <button
-    type="button"
-    class="btn btn-outline-primary"
-    (click)="nav_to_create()"
-  >
-    Create post
-  </button>
-   </div>
+    <div class="create_button_container">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="nav_to_create()"
+      >
+        Create post
+      </button>
+    </div>
     <main>
-      <app-question
-        *ngFor="let question of visibleQuestions"
-        [question]="question"
-        (newGetArticleEvent)="getQuestions()"
-      ></app-question>
+      <ng-container *ngIf="isCategory; else allPostsBlock">
+        <app-category
+          *ngFor="let category of categoryList"
+          [category]="category"
+          (newGetArticleEvent)="getCategory()"
+        ></app-category>
+        <app-question
+          *ngFor="let question of questionList"
+          [question]="question"
+          (newGetArticleEvent)="get5Questions()"
+        ></app-question>
+      </ng-container>
+      <ng-template #allPostsBlock>
+        <ng-container *ngIf="isAllPosts; else myPostsBlock">
+          <div class="app-category">
+            <app-question
+              *ngFor="let question of visibleQuestions"
+              [question]="question"
+              (newGetArticleEvent)="getQuestions()"
+            ></app-question>
+            <button
+              id="load_more"
+              type="button"
+      class="btn btn-outline-primary"
+              *ngIf="visibleQuestions.length < questionList.length"
+              (click)="loadMoreQuestions()"
+            >
+              Load More
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #myPostsBlock>
+          <app-question
+            *ngFor="let question of questionMyPostsList"
+            [question]="question"
+            (newGetArticleEvent)="getMyPosts()"
+          ></app-question>
+        </ng-template>
+      </ng-template>
     </main>
-    <button
-      id="load_more"
-      type="button"
-      class="nav_button"
-      *ngIf="visibleQuestions.length < questionList.length"
-      (click)="loadMoreQuestions()"
-    >
-      Load More
-    </button>
   </div>
 </div>

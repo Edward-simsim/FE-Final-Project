@@ -7,5 +7,5 @@ export class Question {
       description:string='';
     date:string='';
     userEmail:string='';
-    category: number=0;
+    category: number[]=[];
 }
