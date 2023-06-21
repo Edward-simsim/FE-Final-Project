@@ -2,12 +2,12 @@
      data-client_id="585048238735-n4e8m2puplpnduoh3dfkss4i49mje46s.apps.googleusercontent.com"
      data-context="signin"
      data-ux_mode="popup"
-     data-login_uri="http://localhost:3000/api/login"
      data-auto_select="true"
      data-itp_support="true">
 </div>
 
-<div class="g_id_signin"
+<div id="google-sign-in-button"
+     class="g_id_signin"
      data-type="standard"
      data-shape="rectangular"
      data-theme="outline"
@@ -15,3 +15,23 @@
      data-size="large"
      data-logo_alignment="left">
 </div>
+
+<div *ngIf="isLoggedIn">
+     <p>Logged in as: {{ loggedInUserName }}</p>
+     <!-- Modal -->
+     <div class="modal" id="loggedInModal" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title">Logged In</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <p>Welcome, {{ loggedInUserName }}!</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
