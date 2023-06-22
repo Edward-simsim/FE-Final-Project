@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
-import { QuestionService } from 'src/app/service/question.service';
+import { QuestionService } from 'src/app/service/question/question.service';
 
 @Component({
   selector: 'app-category',

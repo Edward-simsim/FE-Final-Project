@@ -1,0 +1,41 @@
+.comment_container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 6px 0;
+  padding: 3px 10px;
+}
+.comment_content {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  padding: 3px 10px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+  align-items: end;
+}
+.like_container {
+  width: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+.like {
+    width: 50px;
+    display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+p {
+  margin: 0;
+}

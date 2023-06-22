@@ -2,7 +2,7 @@ export class Category {
     static id(id: any) {
         throw new Error('Method not implemented.');
       }
-      id?:number;
+      categoryId?:number;
       categoryName:string='';
    
 }

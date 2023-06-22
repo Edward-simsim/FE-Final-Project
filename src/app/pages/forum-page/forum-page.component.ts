@@ -9,8 +9,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { Category } from "src/app/models/category";
 import { Question } from "src/app/models/question";
-import { CategoryService } from "src/app/service/category.service";
-import { QuestionService } from "src/app/service/question.service";
+import { CategoryService } from "src/app/service/category/category.service";
+import { QuestionService } from "src/app/service/question/question.service";
 
 @Component({
   selector: "app-forum-page",
@@ -40,7 +40,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   visibleQuestions: Question[] = [];
   questionsPerPage = 5;
   currentPage = 1;
-
+n=5;
   questionUserEmail: string = "test1@gmail";
   activeButtonId: string = '';
 
@@ -64,7 +64,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.visibleQuestions = [];
     this.questionList = [];
     this.getCategory();
-    this.get5Questions();
+    this.get5Questions(this.n);
   }
   showAllPosts() {
     this.activeButtonId = 'allPosts';
@@ -103,9 +103,9 @@ export class ForumPageComponent implements OnInit, OnDestroy {
         this.categoryList = categorys;
       });
   }
-  get5Questions() {
+  get5Questions(n:number) {
     this.questionSubscription = this.questionService
-      .get5Questions()
+      .get5Questions(n)
       .subscribe((questions: Question[]) => {
         this.questionList = questions;
       });

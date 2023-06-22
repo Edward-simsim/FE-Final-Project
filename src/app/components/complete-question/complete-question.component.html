@@ -2,8 +2,8 @@
 <div class="completeQuestion_container">
   <div class="completeQuestionC_up">
     <div class="name_date">
-      <p class="completeQuestion_user">{{ completeQuestion.userEmail }}</p>
-      <p class="completeQuestion_date">{{ completeQuestion.date }}</p>
+      <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
+      <p class="completeQuestion_date">{{ completeQuestion.creationDate }}</p>
     </div>
     <div class="completeQuestion_category">
       <p>{{ completeQuestion.category }}</p>
@@ -23,5 +23,31 @@
       <p>like</p>
     </div>
     <hr />
+  </div>
+  <div class="comments_container">
+    <app-comment
+      *ngFor="let comment of commentList"
+      [comment]="comment"
+      (newGetArticleEvent)="getComments()"
+    ></app-comment>
+    <form class="form-group" [formGroup]="commentForm">
+      <div class="form-group">
+        <textarea
+          #comment
+          class="form-control"
+          id="comment"
+          rows="3"
+          placeholder="comment"
+          formControlName="text"
+        ></textarea>
+      </div>
+    </form>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="addComment()"
+    >
+      Comment
+    </button>
   </div>
 </div>
