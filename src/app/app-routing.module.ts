@@ -10,10 +10,9 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { MembersPageComponent } from './pages/members-page/members-page.component';
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'error', component: ErrorComponent},
-  //{path: '', component: LoginComponent},
   {path:"forum", component:ForumPageComponent},
   {path:"create", component: CreatePageComponent},
   {path:"question/:id", component:ViewQuestionPageComponent},
