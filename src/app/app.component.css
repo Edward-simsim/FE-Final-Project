@@ -1,3 +1,6 @@
+.router_container {
+  min-height: 900px;
+}
 .container {
   width: 1200px;
   align-items: center;
