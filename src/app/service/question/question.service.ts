@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Question } from "../../models/question";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -13,18 +13,18 @@ export class QuestionService {
   getQuestions(): Observable<Question[]> {
     return this.http
       .get<Question[]>("http://localhost:8080/api/v1/questions/all")
-      .pipe(map((questions) => questions.reverse()));
+      
   }
   get5Questions(n:number): Observable<Question[]> {
     return this.http
       .get<Question[]>(`http://localhost:8080/api/v1/questions/size?n=${n}`)
-      .pipe(map((questions) => questions.reverse().slice(0, 5)));
+     
   }
 
-
+ 
 
 addQuestion(question: Question, token: string): Observable<Question> {
-    console.log('Question Category:', question.category);
+    console.log("ADDQuestion!!start");
 console.log("token : "+token);
     const httpOptions = {
         headers: new HttpHeaders({
@@ -41,10 +41,16 @@ console.log("token : "+token);
 }
 
 
-  getQuestion(questionId: number): Observable<Question> {
-    console.log("service question : " + questionId);
-    return this.http.get<Question>(`http://localhost:8080/api/v1/questions/questionId?questionId=${questionId}`);
-  }
+getQuestion(id: number): Observable<Question> {
+  console.log("Service question ID: " + id);
+  return this.http.get<Question>(`http://localhost:8080/api/v1/questions/questionId?questionId=${id}`)
+    .pipe(
+      tap((question: Question) => {
+        console.log("Service question: ", question);
+      })
+    );
+}
+
   
   getQuestionsByUserEmail(email: string): Observable<Question[]> {
     console.log("getQuestionsByUserEmail : " + email);

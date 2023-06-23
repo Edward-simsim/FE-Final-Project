@@ -40,13 +40,14 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   visibleQuestions: Question[] = [];
   questionsPerPage = 5;
   currentPage = 1;
-n=5;
+  n = 5;
   questionUserEmail: string = "test1@gmail";
-  activeButtonId: string = '';
+  activeButtonId: string = "";
 
+  
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      if (params['myPosts']) {
+      if (params["myPosts"]) {
         setTimeout(() => {
           this.myPostsButton.nativeElement.click();
         });
@@ -56,7 +57,7 @@ n=5;
     this.showCategory();
   }
   showCategory() {
-    this.activeButtonId = 'categories';
+    this.activeButtonId = "categories";
     console.log("Category");
     this.isAllPosts = false;
     this.isCategory = true;
@@ -67,7 +68,7 @@ n=5;
     this.get5Questions(this.n);
   }
   showAllPosts() {
-    this.activeButtonId = 'allPosts';
+    this.activeButtonId = "allPosts";
     console.log("All posts");
     this.isAllPosts = true;
     this.isCategory = false;
@@ -76,9 +77,10 @@ n=5;
     this.questionList = [];
     this.categoryList = [];
     this.getQuestions();
+
   }
   showMyPosts() {
-    this.activeButtonId = 'myPosts';
+    this.activeButtonId = "myPosts";
     this.isAllPosts = false;
     this.isCategory = false;
     this.isMyPosts = true;
@@ -92,7 +94,7 @@ n=5;
     console.log("getMyPosts : " + this.questionMyPostsList);
     this.questionSubscription = this.questionService
       .getQuestionsByUserEmail(this.questionUserEmail)
-      .subscribe((questionsMy) => {
+      .subscribe((questionsMy:Question[]) => {
         this.questionMyPostsList = questionsMy;
       });
   }
@@ -103,11 +105,11 @@ n=5;
         this.categoryList = categorys;
       });
   }
-  get5Questions(n:number) {
+  get5Questions(n: number) {
     this.questionSubscription = this.questionService
       .get5Questions(n)
-      .subscribe((questions: Question[]) => {
-        this.questionList = questions;
+      .subscribe((questions5: Question[]) => {
+        this.questionList = questions5;
       });
   }
 
@@ -115,8 +117,11 @@ n=5;
     this.questionSubscription = this.questionService
       .getQuestions()
       .subscribe((questions: Question[]) => {
+        console.log("Questions:", questions);
         this.questionList = questions;
+        console.log("questionList(forum.ts) "+ questions);
         this.loadVisibleQuestions();
+        console.log("visibleQuestions(forum.ts) " + questions);
       });
   }
 
@@ -139,7 +144,7 @@ n=5;
     this.router.navigate(["/create"]);
   }
   nav_after_publish() {
-    this.router.navigate(['forum'], { queryParams: { myPosts: true } });
+    this.router.navigate(["forum"], { queryParams: { myPosts: true } });
   }
   ngOnDestroy(): void {
     this.categorySubscription?.unsubscribe();

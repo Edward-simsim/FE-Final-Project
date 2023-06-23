@@ -37,11 +37,10 @@ export class CreatePageComponent implements OnInit {
 
   createForm() {
     this.questionForm = this.formBuilder.group({
-      userEmail: [""],
-      category: [[]],
+      categoryIds: [[]],
       title: [""],
       description: [""],
-      date: [new Date()],
+     
     });
   }
 
@@ -57,15 +56,15 @@ export class CreatePageComponent implements OnInit {
   }
   addQuestion() {
     console.log("merge?");
-    const selectedCategories = this.questionForm.value.category;
+    const selectedCategories = this.questionForm.value.categoryIds;
     const question: Question = {
-      category: this.selectedCategories || [],
+      categoryIds:selectedCategories || [],
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
-      email: this.questionForm.value.email || "",
+      userEmail: this.questionForm.value.email || "",
       creationDate: this.questionForm.value.date || "",
     };
-    console.log("Question Category:", question.category);
+    console.log("Question Category:", question.categoryIds);
     this.questionService
       .addQuestion(
         question,

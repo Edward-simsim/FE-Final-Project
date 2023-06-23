@@ -17,10 +17,12 @@ export class ViewQuestionPageComponent implements OnInit {
 constructor(private route : ActivatedRoute, private questionService :QuestionService) {}
 
 ngOnInit(): void {
-  console.log("view questionID : " + this.questionId);
+
   this.questionId = Number(this.route.snapshot.paramMap.get("id"));
+  console.log("view questionID : " + this.questionId);
   this.questionSubscription = this.questionService.getQuestion(this.questionId).subscribe((question) => {
     this.question = question;
+    console.log(this.question);
   });
 }
 

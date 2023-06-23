@@ -1,5 +1,5 @@
+import { LoginService } from './../service/logIn/login.service';
 import { Component, AfterViewInit } from '@angular/core';
-import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -15,7 +15,7 @@ export class LoginComponent implements AfterViewInit {
   isLoggedIn: boolean = false;
   loggedInUserName: string = '';
 
-  constructor(private http: HttpClient, private loginService: LoginService) {}
+  constructor(private http: HttpClient, private LoginService: LoginService) {}
  
 
   ngAfterViewInit(): void {
@@ -66,10 +66,12 @@ export class LoginComponent implements AfterViewInit {
   // }
 
   onSignIn(googleUser: any) {
+   
     const idToken = googleUser.getAuthResponse().id_token;
+    console.log("SignIn Token " +idToken  );
   // Send the idToken to your backend for verification and further processing
   this.sendTokenToBackend(idToken);
-  this.loginService.userHasLoggedIn(idToken);
+  this.LoginService.userHasLoggedIn(idToken);
     //console.log('Google user signed in:', googleUser);
     // Get the user's ID token and profile information
     //send tge id_token to the BE
@@ -96,6 +98,7 @@ export class LoginComponent implements AfterViewInit {
   }
 
   sendTokenToBackend(idToken: string) {
+    console.log("Token " +idToken  );
     // Send the idToken to your backend for verification
     const url = 'YOUR_BACKEND_URL'; // Replace with your backend URL
     this.http.post(url, { idToken }).subscribe(

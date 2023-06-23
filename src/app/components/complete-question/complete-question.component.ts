@@ -39,6 +39,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.createForm();
     this.getComments();
+    
   }
 
   ngAfterViewInit(): void {
@@ -61,11 +62,16 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
       });
   }
   addComment() {
-   
+   console.log("ADD comment triger");
     const comment: Comment = {
       text: this.commentForm.value.text || "",
       questionId: this.questionId,
     };
+    const commentText: string = this.commentForm.value.text.trim();
+    if (commentText.length < 10) {
+    alert("Please enter at least 10 characters for the comment.");
+    return;
+  }
     this.commentService.addComment(
       comment,
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI"
@@ -77,5 +83,9 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
     }
     );
     console.log("Press addComment : " + comment.text+"  " +comment.questionId);
+    this.commentForm.reset();
+    this.getComments();
+ 
+
   }
 }

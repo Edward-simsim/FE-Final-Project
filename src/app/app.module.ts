@@ -19,12 +19,13 @@ import { CategoryComponent } from './components/category/category.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { MembersPageComponent } from './pages/members-page/members-page.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { MatSelectModule } from '@angular/material/select';
 import { SocialLoginModule } from '@abacritt/angularx-social-login';
 import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -54,22 +55,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     CommonModule,
     MatFormFieldModule,
+    GoogleSigninButtonModule
   ],
   
   providers: [
     QuestionService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('YOUR_CLIENT_ID')
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
+   
   ],
   bootstrap: [AppComponent],
   exports: [QuestionComponent]

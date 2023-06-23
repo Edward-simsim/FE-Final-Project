@@ -3,7 +3,7 @@
   <form class="input_container" [formGroup]="questionForm">
     <mat-form-field>
       <mat-label>Categories</mat-label>
-      <mat-select id="select" formControlName="category" multiple>
+      <mat-select id="select" formControlName="categoryIds" multiple>
         <mat-option *ngFor="let category of categories" [value]="category.value">
           {{category.viewValue}}
         </mat-option>
@@ -11,12 +11,7 @@
     </mat-form-field>
     
     <div class="create_input">
-      <input
-        type="text"
-        id="userEmail"
-        placeholder="userEmail"
-        formControlName="userEmail"
-      />
+    
       <input
         type="text"
         id="title"

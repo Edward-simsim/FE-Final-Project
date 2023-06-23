@@ -18,7 +18,10 @@ export class QuestionComponent {
  
 
   truncateText(text: string, maxRows: number, maxCharacters: number): string {
-   
+    if (!text) {
+        return '';  // Return an empty string if text is undefined
+    }
+
     const lines = text.split("\n");
     let truncatedText = "";
 
@@ -37,8 +40,8 @@ export class QuestionComponent {
     }
 
     return truncatedText;
-  }
+}
   navclick() {
-    this.router.navigateByUrl(`/question/${this.question.questionId}`)
+    this.router.navigateByUrl(`/question/${this.question.id}`)
   }
 }
