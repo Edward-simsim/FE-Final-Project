@@ -68,7 +68,7 @@
         <app-question
           *ngFor="let question of questionList"
           [question]="question"
-          (newGetArticleEvent)="get5Questions()"
+          (newGetArticleEvent)="get5Questions(n)"
         ></app-question>
       </ng-container>
       <ng-template #allPostsBlock>

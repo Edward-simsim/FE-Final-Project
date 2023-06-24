@@ -1,7 +1,7 @@
 import { Router } from "@angular/router";
-import { Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { QuestionService } from "src/app/service/question.service";
+import { QuestionService } from "src/app/service/question/question.service";
 import { Question } from "src/app/models/question";
 
 @Component({
@@ -19,22 +19,31 @@ export class CreatePageComponent implements OnInit {
     private router: Router
   ) {}
 
-
+  categories = [
+    { value: 1, viewValue: "One" },
+    { value: 2, viewValue: "Two" },
+    { value: 3, viewValue: "Three" },
+  ];
 
   ngOnInit() {
     this.createForm();
+    const categoryControl = this.questionForm.get("category");
+    if (categoryControl) {
+      categoryControl.valueChanges.subscribe((val) => {
+        this.selectedCategories = val.map(Number);
+      });
+    }
   }
 
   createForm() {
     this.questionForm = this.formBuilder.group({
-      userEmail: [""],
-      category: this.formBuilder.array([this.formBuilder.control(false)]),
+      categoryIds: [[]],
       title: [""],
       description: [""],
+     
     });
   }
 
-  
   updateSelectedCategories(category: number) {
     const index = this.selectedCategories.indexOf(category);
     if (index > -1) {
@@ -47,29 +56,36 @@ export class CreatePageComponent implements OnInit {
   }
   addQuestion() {
     console.log("merge?");
-    const selectedCategories = this.questionForm.value.category;
+    const selectedCategories = this.questionForm.value.categoryIds;
     const question: Question = {
-      category: this.selectedCategories,
+      categoryIds:selectedCategories || [],
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
-      userEmail: this.questionForm.value.userEmail || "",
-      date: this.questionForm.value.date || "",
+      userEmail: this.questionForm.value.email || "",
+      creationDate: this.questionForm.value.date || "",
     };
-
-    this.questionService.addQuestion(question).subscribe(
-      () => {
-        console.log("Question added successfully");
-      },
-      (error) => {
-        console.error("Error adding question:", error);
-      }
-    );
+    console.log("Question Category:", question.categoryIds);
+    this.questionService
+      .addQuestion(
+        question,
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI"
+      )
+      .subscribe(
+        () => {
+          console.log("Question added!!yeey");
+        },
+        (error) => {
+          console.error("Error adding question:", error);
+        }
+      );
     console.log("test after publish");
-   this.navigateToForum();
+    this.navigateToForum();
   }
- 
+
   navigateToForum() {
-    this.router.navigate(['forum'], { queryParams: { myPosts: true } });
+    this.router.navigate(["forum"], { queryParams: { myPosts: true } });
   }
-  
+  onSubmit(formValue: any) {
+    console.log("Selected categories:", formValue.categorySelect);
+  }
 }

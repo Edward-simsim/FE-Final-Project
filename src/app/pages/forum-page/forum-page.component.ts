@@ -9,8 +9,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { Category } from "src/app/models/category";
 import { Question } from "src/app/models/question";
-import { CategoryService } from "src/app/service/category.service";
-import { QuestionService } from "src/app/service/question.service";
+import { CategoryService } from "src/app/service/category/category.service";
+import { QuestionService } from "src/app/service/question/question.service";
 
 @Component({
   selector: "app-forum-page",
@@ -40,13 +40,14 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   visibleQuestions: Question[] = [];
   questionsPerPage = 5;
   currentPage = 1;
-
+  n = 5;
   questionUserEmail: string = "test1@gmail";
-  activeButtonId: string = '';
+  activeButtonId: string = "";
 
+  
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      if (params['myPosts']) {
+      if (params["myPosts"]) {
         setTimeout(() => {
           this.myPostsButton.nativeElement.click();
         });
@@ -56,7 +57,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.showCategory();
   }
   showCategory() {
-    this.activeButtonId = 'categories';
+    this.activeButtonId = "categories";
     console.log("Category");
     this.isAllPosts = false;
     this.isCategory = true;
@@ -64,10 +65,10 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.visibleQuestions = [];
     this.questionList = [];
     this.getCategory();
-    this.get5Questions();
+    this.get5Questions(this.n);
   }
   showAllPosts() {
-    this.activeButtonId = 'allPosts';
+    this.activeButtonId = "allPosts";
     console.log("All posts");
     this.isAllPosts = true;
     this.isCategory = false;
@@ -76,9 +77,10 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionList = [];
     this.categoryList = [];
     this.getQuestions();
+
   }
   showMyPosts() {
-    this.activeButtonId = 'myPosts';
+    this.activeButtonId = "myPosts";
     this.isAllPosts = false;
     this.isCategory = false;
     this.isMyPosts = true;
@@ -92,7 +94,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     console.log("getMyPosts : " + this.questionMyPostsList);
     this.questionSubscription = this.questionService
       .getQuestionsByUserEmail(this.questionUserEmail)
-      .subscribe((questionsMy) => {
+      .subscribe((questionsMy:Question[]) => {
         this.questionMyPostsList = questionsMy;
       });
   }
@@ -103,11 +105,11 @@ export class ForumPageComponent implements OnInit, OnDestroy {
         this.categoryList = categorys;
       });
   }
-  get5Questions() {
+  get5Questions(n: number) {
     this.questionSubscription = this.questionService
-      .get5Questions()
-      .subscribe((questions: Question[]) => {
-        this.questionList = questions;
+      .get5Questions(n)
+      .subscribe((questions5: Question[]) => {
+        this.questionList = questions5;
       });
   }
 
@@ -115,8 +117,11 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionSubscription = this.questionService
       .getQuestions()
       .subscribe((questions: Question[]) => {
+        console.log("Questions:", questions);
         this.questionList = questions;
+        console.log("questionList(forum.ts) "+ questions);
         this.loadVisibleQuestions();
+        console.log("visibleQuestions(forum.ts) " + questions);
       });
   }
 
@@ -139,7 +144,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.router.navigate(["/create"]);
   }
   nav_after_publish() {
-    this.router.navigate(['forum'], { queryParams: { myPosts: true } });
+    this.router.navigate(["forum"], { queryParams: { myPosts: true } });
   }
   ngOnDestroy(): void {
     this.categorySubscription?.unsubscribe();

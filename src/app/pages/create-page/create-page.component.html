@@ -1,57 +1,17 @@
 <div class="create_container">
   <h2>What is your question</h2>
   <form class="input_container" [formGroup]="questionForm">
-    <div class="form-row align-items-center">
-      <div class="col-auto my-1">
-        <p>category</p>
-        <div
-          class="form-check form-check-inline"
-          *ngFor="let category of questionForm.controls['category'].value"
-        >
-   
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox1"
-            value="1"
-        
-            (change)="updateSelectedCategories(1)"
-          />
-          <label class="form-check-label" for="inlineCheckbox1">SQL</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox2"
-            value="2"
-
-            (change)="updateSelectedCategories(2)"
-          />
-          <label class="form-check-label" for="inlineCheckbox2">C++</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox3"
-            value="3"
-        
-            (change)="updateSelectedCategories(3)"
-          />
-          <label class="form-check-label" for="inlineCheckbox3">FrontEnd</label>
-        </div>
-      </div>
-    </div>
+    <mat-form-field>
+      <mat-label>Categories</mat-label>
+      <mat-select id="select" formControlName="categoryIds" multiple>
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{category.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
     <div class="create_input">
-      <input
-        type="text"
-        id="userEmail"
-        placeholder="userEmail"
-        formControlName="userEmail"
-      />
+    
       <input
         type="text"
         id="title"

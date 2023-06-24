@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { Question } from "src/app/models/question";
-import { QuestionService } from "src/app/service/question.service";
+import { QuestionService } from "src/app/service/question/question.service";
 
 @Component({
   selector: "app-question",
@@ -18,7 +18,10 @@ export class QuestionComponent {
  
 
   truncateText(text: string, maxRows: number, maxCharacters: number): string {
-   
+    if (!text) {
+        return '';  // Return an empty string if text is undefined
+    }
+
     const lines = text.split("\n");
     let truncatedText = "";
 
@@ -37,7 +40,7 @@ export class QuestionComponent {
     }
 
     return truncatedText;
-  }
+}
   navclick() {
     this.router.navigateByUrl(`/question/${this.question.id}`)
   }

@@ -10,7 +10,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { QuestionComponent } from './components/question/question.component';
-import { QuestionService } from './service/question.service';
+import { QuestionService } from './service/question/question.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ViewQuestionPageComponent } from './pages/view-question-page/view-question-page.component';
@@ -18,6 +18,15 @@ import { CompleteQuestionComponent } from './components/complete-question/comple
 import { CategoryComponent } from './components/category/category.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { MembersPageComponent } from './pages/members-page/members-page.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { GoogleLoginProvider, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { MatSelectModule } from '@angular/material/select';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
+import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,17 +41,27 @@ import { MembersPageComponent } from './pages/members-page/members-page.componen
     CompleteQuestionComponent,
     CategoryComponent,
     AboutPageComponent,
-    MembersPageComponent
+    MembersPageComponent,
+    CommentComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    MatSelectModule,
     BrowserModule,
+    SocialLoginModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MatFormFieldModule,
+    GoogleSigninButtonModule
   ],
-  providers: [QuestionService],
+  
+  providers: [
+    QuestionService,
+   
+  ],
   bootstrap: [AppComponent],
   exports: [QuestionComponent]
 })

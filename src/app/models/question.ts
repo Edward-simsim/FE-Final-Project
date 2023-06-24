@@ -5,7 +5,7 @@ export class Question {
       id?:number;
       title:string='';
       description:string='';
-    date:string='';
+      creationDate:string='';
     userEmail:string='';
-    category: number[]=[];
+    categoryIds: number[]=[];
 }
