@@ -2,9 +2,8 @@ import { Component, AfterViewInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-//import * as gapi from 'gapi';
-//var gapi= require('gapi');
-declare const gapi: any;
+
+declare const google: any;
 
 @Component({
   selector: 'app-login',
@@ -21,48 +20,59 @@ export class LoginComponent implements AfterViewInit {
     this.initializeGoogleSignIn();
   }
 
-  initializeGoogleSignIn() {
-    const checkGapi = () => {
-      if (typeof gapi === 'undefined') {
+  initializeGoogleSignIn(): void {
+    const checkGapi = (): void => {
+      if (typeof google === 'undefined') {
         setTimeout(checkGapi, 100);
       } else {
-        gapi.load('auth2', () => {
-          gapi.auth2.init({
-            client_id: '585048238735-n4e8m2puplpnduoh3dfkss4i49mje46s.apps.googleusercontent.com',
-            scope: 'profile email',
-            // Disable postMessage calls
-            //To fix Cross-Origin Errors
-            ux_mode: 'redirect',
-            redirect_uri: 'postmessage',
-          }).then(() => {
-            this.renderGoogleSignInButton();
-          });
+        google.accounts.id.initialize({
+          client_id: '585048238735-n4e8m2puplpnduoh3dfkss4i49mje46s.apps.googleusercontent.com',
+          callback: this.onLoggedIn.bind(this)
         });
+        google.accounts.id.prompt();
+      //   gapi.load('auth2', () => {
+      //     gapi.auth2.init({
+      //       client_id: '585048238735-n4e8m2puplpnduoh3dfkss4i49mje46s.apps.googleusercontent.com',
+      //       scope: 'profile email',
+      //       // Disable postMessage calls
+      //       //To fix Cross-Origin Errors
+      //       ux_mode: 'redirect',
+      //       redirect_uri: 'postmessage',
+      //     }).then(() => {
+      //       this.renderGoogleSignInButton();
+      //     });
+      //   });
+      // }
       }
     };
 
     checkGapi();
   }
+
+  onLoggedIn(data: {credential: string}): void{
+    console.log('onLoggedIn ', data.credential);
+    //this.loginService.isLoggedIn$ = data.credential;
+  }
   
 
-  renderGoogleSignInButton() {
-    gapi.signin2.render('google-sign-in-button', {
-      scope: 'profile email',
-      width: 240,
-      height: 50,
-      longtitle: true,
-      theme: 'light',
-      onsuccess: this.onSignIn.bind(this),
-      onfailure: this.onSignInFailure.bind(this)
-    });
-  }
+  // renderGoogleSignInButton() {
+  //   gapi.signin2.render('google-sign-in-button', {
+  //     scope: 'profile email',
+  //     width: 240,
+  //     height: 50,
+  //     longtitle: true,
+  //     theme: 'light',
+  //     onsuccess: this.onSignIn.bind(this),
+  //     onfailure: this.onSignInFailure.bind(this)
+  //   });
+  // }
 
   onSignIn(googleUser: any) {
     const idToken = googleUser.getAuthResponse().id_token;
     // Send the idToken to your backend for verification and further processing
     //this.sendTokenToBackend(idToken);
     const profile = googleUser.getBasicProfile();
-  const userName = profile.getName();
+    const userName = profile.getName();
     this.loginService.userHasLoggedIn(idToken);
     this.showLoggedInModal(userName);
     this.router.navigate(['/home-page']);
@@ -94,7 +104,7 @@ export class LoginComponent implements AfterViewInit {
 }
 
 
-
+//LIBRARIE VECHE
   // initializeGoogleSignIn() {
   //   gapi.load('auth2', () => {
   //     gapi.auth2.init({
