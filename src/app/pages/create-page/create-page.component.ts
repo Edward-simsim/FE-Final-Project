@@ -67,17 +67,9 @@ export class CreatePageComponent implements OnInit {
     console.log("Question Category:", question.categoryIds);
     this.questionService
       .addQuestion(
-        question,
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI"
+        question
       )
-      .subscribe(
-        () => {
-          console.log("Question added!!yeey");
-        },
-        (error) => {
-          console.error("Error adding question:", error);
-        }
-      );
+      .subscribe();
     console.log("test after publish");
     this.navigateToForum();
   }
