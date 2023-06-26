@@ -69,8 +69,6 @@ export class LoginComponent implements AfterViewInit {
 
   onSignIn(googleUser: any) {
     const idToken = googleUser.getAuthResponse().id_token;
-    // Send the idToken to your backend for verification and further processing
-    //this.sendTokenToBackend(idToken);
     const profile = googleUser.getBasicProfile();
     const userName = profile.getName();
     this.loginService.userHasLoggedIn(idToken);
