@@ -42,6 +42,7 @@ export class QuestionComponent {
     return truncatedText;
 }
   navclick() {
+    console.log("nav_click question.id : "+this.question.id );
     this.router.navigateByUrl(`/question/${this.question.id}`)
   }
 }

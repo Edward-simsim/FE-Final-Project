@@ -1,0 +1,20 @@
+<div class="search_container">
+  <div class="search_content">
+     <div class="btn_container">
+      <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="nav_to_create()"
+    >
+      Create post
+    </button>
+     </div>
+      <app-question
+      *ngFor="let question of questionSearchList"
+      [question]="question"
+      questionId="questionId"
+      (newGetArticleEvent)="getSearchQuestions()"
+    ></app-question>
+  
+  </div>
+</div>
