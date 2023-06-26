@@ -5,6 +5,8 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
+
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { Category } from "src/app/models/category";
@@ -19,6 +21,7 @@ import { QuestionService } from "src/app/service/question/question.service";
 })
 export class ForumPageComponent implements OnInit, OnDestroy {
   constructor(
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private questionService: QuestionService,
@@ -26,6 +29,14 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   ) {}
 
   @ViewChild("myPostsButton") myPostsButton!: ElementRef;
+
+  selectedSearchCategories: number[] = [];
+searchForm!:FormGroup;
+categoryIds = [
+    { value: 1, viewValue: "One" },
+    { value: 2, viewValue: "Two" },
+    { value: 3, viewValue: "Three" },
+  ];
 
   isCategory = false;
   isAllPosts = false;
@@ -45,7 +56,8 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   activeButtonId: string = "";
 
   
-  ngOnInit(): void {
+  ngOnInit(): void { 
+      this.createSearchForm();
     this.activatedRoute.queryParams.subscribe((params) => {
       if (params["myPosts"]) {
         setTimeout(() => {
@@ -53,9 +65,24 @@ export class ForumPageComponent implements OnInit, OnDestroy {
         });
       }
     });
-
+    const categorySearchControl = this.searchForm.get("category");
+    if(categorySearchControl) {
+      categorySearchControl.valueChanges.subscribe((val) => {
+        this.selectedSearchCategories =val.map(Number);
+      })
+    }
+    console.log("createSearchForm : " );
     this.showCategory();
   }
+createSearchForm() {
+  this.searchForm=this.formBuilder.group({
+    categoryIds:[[]],
+    keyword:['']
+    
+  })
+  
+}
+
   showCategory() {
     this.activeButtonId = "categories";
     console.log("Category");
@@ -141,13 +168,19 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   }
 
   nav_to_create() {
-    this.router.navigate(["/create"]);
+    this.router.navigate(["create"]);
   }
   nav_after_publish() {
     this.router.navigate(["forum"], { queryParams: { myPosts: true } });
   }
+
+  nav_to_search() {
+    const { keyword, categoryIds } = this.searchForm.value;
+    this.router.navigate(['/search'], { queryParams: { keyword, categoryIds } });
+  }
+
   ngOnDestroy(): void {
-    this.categorySubscription?.unsubscribe();
-    this.questionSubscription?.unsubscribe();
+    this.categorySubscription.unsubscribe();
+    this.questionSubscription.unsubscribe();
   }
 }

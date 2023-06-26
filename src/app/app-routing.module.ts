@@ -9,6 +9,7 @@ import { ViewQuestionPageComponent } from './pages/view-question-page/view-quest
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { MembersPageComponent } from './pages/members-page/members-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"home", component:HomePageComponent},
   {path:"about", component:AboutPageComponent},
   {path:"members", component:MembersPageComponent},
+  {path:"search",component:SearchPageComponent},
  
 ]
 

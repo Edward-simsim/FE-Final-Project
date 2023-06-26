@@ -17,6 +17,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
   @ViewChild("comment") comment!: ElementRef;
   @Input() completeQuestion: Question = new Question();
   @Input() questionId: number = 0;
+  @Input() question: Question = new Question();
   questionSubscription: Subscription = new Subscription();
   commentSubscription: Subscription = new Subscription();
   commentList: Comment[] = [];
@@ -39,7 +40,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.createForm();
     this.getComments();
-    
+    console.log("question userEmail : " + this.question.email);
   }
 
   ngAfterViewInit(): void {
@@ -77,6 +78,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI"
     ).subscribe(()=>{
       console.log("Comment added!");
+      this.getComments();
     },
     (error) =>{
       console.log("Error adding comment",error);
@@ -84,7 +86,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
     );
     console.log("Press addComment : " + comment.text+"  " +comment.questionId);
     this.commentForm.reset();
-    this.getComments();
+    
  
 
   }

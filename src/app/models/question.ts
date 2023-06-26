@@ -6,6 +6,6 @@ export class Question {
       title:string='';
       description:string='';
       creationDate:string='';
-    userEmail:string='';
+    email:string='';
     categoryIds: number[]=[];
 }

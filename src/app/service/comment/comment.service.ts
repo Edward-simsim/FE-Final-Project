@@ -34,4 +34,22 @@ console.log("token : "+token);
         httpOptions
     );
 }
+
+markCommentAsSolved(commentId: number, token: string): Observable<any> {
+  const url = `http://localhost:8080/api/v1/comments/${commentId}/solved`;
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  const options = { headers: headers };
+
+  return this.http.put(url, {}, options);
+ 
+}
+markQuestionAsSolved(questionId: number, token: string): Observable<any> {
+  const url = `http://localhost:8080/api/v1/comments/${questionId}/solved`;
+
+
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  const options = { headers: headers };
+
+  return this.http.put(url, {}, options);
+}
 }

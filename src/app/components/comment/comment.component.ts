@@ -1,21 +1,57 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Comment } from 'src/app/models/ comment';
-import { CommentService } from 'src/app/service/comment/comment.service';
-
+import { QuestionService } from "src/app/service/question/question.service";
+import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Comment } from "src/app/models/ comment";
+import { Question } from "src/app/models/question";
+import { CommentService } from "src/app/service/comment/comment.service";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-comment',
-  templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  selector: "app-comment",
+  templateUrl: "./comment.component.html",
+  styleUrls: ["./comment.component.css"],
 })
-export class CommentComponent {
+export class CommentComponent implements OnInit {
+  @Input() comment: Comment = new Comment();
+  @Input() question: Question = new Question();
+  @Input() questionId: number = 0;
+  questionSubscription: Subscription = new Subscription();
+  commentSubscription: Subscription = new Subscription();
+
+  tokenC =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI";
+  tokenQ =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI";
   constructor(
     private commentService: CommentService,
-    private router: Router
+    private router: Router,
+    private questionService: QuestionService
   ) {}
 
-@Input() comment:Comment =  new Comment();
+  ngOnInit(): void {
+    console.log("MarkTrue qustionID1 : " + this.questionId);
+    console.log("On init commentId " + this.comment.commentId);
+  }
 
+  markTrue(commentId: number, token: string) {
+    console.log("MarkTrue commentId: " + commentId);
 
+    this.commentService
+      .markCommentAsSolved(commentId, this.tokenC)
+      .subscribe(() => {
+        setTimeout(() => {
+          this.markQuestionTrue(this.questionId!, this.tokenC);
+        }, 1000); // Delay of 1 second before calling markQuestionTrue
+      });
+  }
+
+  markQuestionTrue(questionId: number, token: string) {
+    console.log("MarkTrue questionID2 : " + questionId);
+
+    const tokens =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI";
+
+    this.questionService.markQuestionAsSolved(questionId, tokens).subscribe();
+    console.log("mark question Complete");
+  }
 }

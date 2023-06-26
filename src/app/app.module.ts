@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorComponent } from './error/error.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -25,12 +25,13 @@ import { SocialLoginModule } from '@abacritt/angularx-social-login';
 import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+
     DashboardComponent,
     ErrorComponent,
     HomePageComponent,
@@ -43,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutPageComponent,
     MembersPageComponent,
     CommentComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
