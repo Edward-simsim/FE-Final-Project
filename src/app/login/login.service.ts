@@ -6,14 +6,10 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class LoginService {
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private isLoggedInCredentialSubject: Subject<string> = new Subject<string>;
+  private tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(''); // Add this line
 
   get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
-  }
-
-  get isLoggedInCredential$(): Observable<string>{
-    return this.isLoggedInCredentialSubject.asObservable();
   }
 
   userHasLoggedIn(token: string): void {
@@ -21,5 +17,12 @@ export class LoginService {
 
     // Update the login status
     this.isLoggedInSubject.next(true);
+
+    // Update the token
+    this.tokenSubject.next(token); // Update this line
+  }
+
+  getToken(): Observable<string> {
+    return this.tokenSubject.asObservable();
   }
 }
