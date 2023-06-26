@@ -2,7 +2,7 @@
 <div class="container">
   <div class="content_up">
     <div class="content_up_nav">
-      <div class="content_up_button">
+      <div class="content_up_buttons">
         <button
           id="categories"
           type="button"
@@ -32,17 +32,7 @@
           My Posts
         </button>
       </div>
-      <div class="content_up_search">
-        <input
-          type="text"
-          class="input"
-          name="search"
-          id="search"
-          placeholder="search"
-        />
-        <i class="fa-solid fa-gear"></i>
-      </div>
-    </div>
+      
     <div class="content_img">
       <p class="content_img_big">Questions and Answers</p>
       <p class="content_img_small">
@@ -50,13 +40,50 @@
       </p>
     </div>
     <div class="create_button_container">
-      <button
+      <div class="search_group">
+        <form class="input_container" [formGroup]="searchForm">
+          <div class="content_up_search">
+            <input
+              type="text"
+              class="input"
+              name="keyword"
+              id="search"
+              placeholder="search"
+              formControlName="keyword"
+            />
+          </div>
+
+          <mat-form-field>
+            <mat-label>Categories</mat-label>
+            <mat-select id="select" formControlName="categoryIds" multiple>
+              <mat-option
+                *ngFor="let category of categoryIds"
+                [value]="category.value"
+              >
+                {{ category.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <div class="search_buton">
+          <button
+            type="button"
+            class="btn btn-outline-primary searchBtn"
+            (click)="nav_to_search()"
+          >
+            search
+          </button> 
+           <button
         type="button"
         class="btn btn-outline-primary"
         (click)="nav_to_create()"
       >
         Create post
       </button>
+        </div>
+      </div>
+    </div>
+    
     </div>
     <main>
       <ng-container *ngIf="isCategory; else allPostsBlock">
@@ -82,7 +109,7 @@
             <button
               id="load_more"
               type="button"
-      class="btn btn-outline-primary"
+              class="btn btn-outline-primary"
               *ngIf="visibleQuestions.length < questionList.length"
               (click)="loadMoreQuestions()"
             >

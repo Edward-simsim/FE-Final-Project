@@ -61,7 +61,7 @@ export class CreatePageComponent implements OnInit {
       categoryIds:selectedCategories || [],
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
-      userEmail: this.questionForm.value.email || "",
+      email: this.questionForm.value.email || "",
       creationDate: this.questionForm.value.date || "",
     };
     console.log("Question Category:", question.categoryIds);

@@ -2,7 +2,7 @@
 <div class="completeQuestion_container">
   <div class="completeQuestionC_up">
     <div class="name_date">
-      <p class="completeQuestion_user">{{ completeQuestion.userEmail }}</p>
+      <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
       <p class="completeQuestion_date">{{ completeQuestion.creationDate }}</p>
     </div>
     <div class="completeQuestion_category">
@@ -29,6 +29,7 @@
       *ngFor="let comment of commentList"
       [comment]="comment"
       (newGetArticleEvent)="getComments()"
+      [questionId]="questionId"
     ></app-comment>
     <form class="form-group" [formGroup]="commentForm">
       <div class="form-group">
