@@ -51,7 +51,8 @@ export class LoginComponent implements AfterViewInit {
 
   onLoggedIn(data: {credential: string}): void{
     console.log('onLoggedIn ', data.credential);
-    //this.loginService.isLoggedIn$ = data.credential;
+    
+   this.loginService.userHasLoggedIn(data.credential)
   }
   
 

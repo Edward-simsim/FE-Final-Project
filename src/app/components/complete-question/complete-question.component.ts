@@ -74,8 +74,7 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
     return;
   }
     this.commentService.addComment(
-      comment,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlckVtYWlsIjoidGVzdDFAZ21haWwiLCJpYXQiOjE1MTYyMzkwMjJ9.SF7Bd3OplKPzRm9-Caw-LK4HFA95PTqF0AeYx_mZOOI"
+      comment
     ).subscribe(()=>{
       console.log("Comment added!");
       this.getComments();
