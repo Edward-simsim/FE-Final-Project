@@ -1,12 +1,10 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { LoginService } from './login.service'
+import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
-
+import {Router} from '@angular/router';
 //import * as gapi from 'gapi';
 //var gapi= require('gapi');
 declare const gapi: any;
-
-
 
 @Component({
   selector: 'app-login',
@@ -17,7 +15,7 @@ export class LoginComponent implements AfterViewInit {
   isLoggedIn: boolean = false;
   loggedInUserName: string = '';
 
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService, private router: Router) { }
 
   ngAfterViewInit(): void {
     this.initializeGoogleSignIn();
@@ -45,9 +43,7 @@ export class LoginComponent implements AfterViewInit {
 
     checkGapi();
   }
-
   
-
 
   renderGoogleSignInButton() {
     gapi.signin2.render('google-sign-in-button', {
@@ -69,6 +65,8 @@ export class LoginComponent implements AfterViewInit {
   const userName = profile.getName();
     this.loginService.userHasLoggedIn(idToken);
     this.showLoggedInModal(userName);
+    this.router.navigate(['/home-page']);
+
   }
 
   onSignInFailure(error: any) {

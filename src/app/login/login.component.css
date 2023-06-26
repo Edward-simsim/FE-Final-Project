@@ -1,10 +1,27 @@
-.container
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1000px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
+
+h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+#google-sign-in-button {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .ifrmae {
     width: 600px;
     height: 100px;

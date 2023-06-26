@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ErrorComponent } from './error/error.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
@@ -31,8 +29,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    ErrorComponent,
     HomePageComponent,
     ForumPageComponent,
     CreatePageComponent,

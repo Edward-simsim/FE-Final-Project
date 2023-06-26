@@ -12,8 +12,6 @@ export class LoginService {
   }
 
   userHasLoggedIn(token: string): void {
-    // Perform any actions you want when the user logs in, such as storing the token or updating the login status
-    // For example, you can save the token to localStorage:
     localStorage.setItem('token', token);
 
     // Update the login status
