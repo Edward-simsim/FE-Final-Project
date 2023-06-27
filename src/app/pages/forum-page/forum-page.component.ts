@@ -115,12 +115,12 @@ createSearchForm() {
     this.questionList = [];
     this.categoryList = [];
     this.getMyPosts();
-    console.log("ShowMyPosts() User email : " + this.questionUserEmail);
+
   }
   getMyPosts() {
     console.log("getMyPosts : " + this.questionMyPostsList);
     this.questionSubscription = this.questionService
-      .getQuestionsByUserEmail(this.questionUserEmail)
+      .getQuestionsByUserEmail()
       .subscribe((questionsMy:Question[]) => {
         this.questionMyPostsList = questionsMy;
       });

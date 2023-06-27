@@ -58,11 +58,10 @@ export class QuestionService {
       );
   }
 
-  getQuestionsByUserEmail(email: string): Observable<Question[]> {
-    console.log("getQuestionsByUserEmail : " + email);
+  getQuestionsByUserEmail(): Observable<Question[]> {
     return this.http
       .get<Question[]>(
-        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/email?email=${email}`
+        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/email`
       )
       .pipe(map((questions) => questions.reverse()));
   }
