@@ -19,12 +19,12 @@ export class QuestionService {
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(
-      "http://localhost:8080/api/v1/questions/all"
+      "https://skills-overflow.ew.r.appspot.com/api/v1/questions/all"
     );
   }
   get5Questions(n: number): Observable<Question[]> {
     return this.http.get<Question[]>(
-      `http://localhost:8080/api/v1/questions/size?n=${n}`
+      `https://skills-overflow.ew.r.appspot.com/api/v1/questions/size?n=${n}`
     );
   }
 
@@ -39,7 +39,7 @@ export class QuestionService {
     };
 
     return this.http.post<Question>(
-      "http://localhost:8080/api/v1/questions",
+      "https://skills-overflow.ew.r.appspot.com/api/v1/questions",
       question,
       httpOptions
     );
@@ -49,7 +49,7 @@ export class QuestionService {
     console.log("Service question ID: " + id);
     return this.http
       .get<Question>(
-        `http://localhost:8080/api/v1/questions/questionId?questionId=${id}`
+        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/questionId?questionId=${id}`
       )
       .pipe(
         tap((question: Question) => {
@@ -62,12 +62,12 @@ export class QuestionService {
     console.log("getQuestionsByUserEmail : " + email);
     return this.http
       .get<Question[]>(
-        `http://localhost:8080/api/v1/questions/email?email=${email}`
+        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/email?email=${email}`
       )
       .pipe(map((questions) => questions.reverse()));
   }
   markQuestionAsSolved(questionId: number, token: string): Observable<any> {
-    const url = `http://localhost:8080/api/v1/questions/${questionId}/solved`;
+    const url = `https://skills-overflow.ew.r.appspot.com/api/v1/questions/${questionId}/solved`;
 
     const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     const options = { headers: headers };
@@ -88,7 +88,7 @@ export class QuestionService {
     const headers = new HttpHeaders().set("jwt", token);
 
     return this.http.get<any>(
-      "http://localhost:8080/api/v1/questions/searchBy",
+      "https://skills-overflow.ew.r.appspot.com/api/v1/questions/searchBy",
       { params, headers }
     );
   }
