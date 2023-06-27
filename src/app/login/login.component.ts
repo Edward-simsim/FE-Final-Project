@@ -53,6 +53,7 @@ export class LoginComponent implements AfterViewInit {
     console.log('onLoggedIn ', data.credential);
     
    this.loginService.userHasLoggedIn(data.credential)
+   this.router.navigate(['/home']);
   }
   
 
@@ -76,7 +77,8 @@ export class LoginComponent implements AfterViewInit {
     const userName = profile.getName();
     this.loginService.userHasLoggedIn(idToken);
     this.showLoggedInModal(userName);
-    this.router.navigate(['/home-page']);
+    console.log("sign in");
+    
 
   }
 

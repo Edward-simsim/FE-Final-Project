@@ -4,6 +4,7 @@
     <div class="name_date">
       <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
       <p class="completeQuestion_date">{{ completeQuestion.creationDate }}</p>
+      <p *ngIf="completeQuestion.solved">Solved</p>
     </div>
     <div class="completeQuestion_category">
       <p>{{ completeQuestion.categoryIds }}</p>
@@ -28,6 +29,7 @@
     <app-comment
       *ngFor="let comment of commentList"
       [comment]="comment"
+      (commentMarkedTrue)="getComments()"
       (newGetArticleEvent)="getComments()"
       [questionId]="questionId"
     ></app-comment>
