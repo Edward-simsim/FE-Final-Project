@@ -2,9 +2,9 @@
 <div class="comment_container">
   <div class="comment_content">
     <p class="text">{{ comment.text }}</p>
-    <!-- <p>{{ comment.userEmail }}</p>
+    <p>{{ comment.userEmail }}</p>
         <p>{{comment.creationDate}} </p>
-        <p>{{comment.isCorrect}} </p> -->
+        <!-- <p>{{comment.isCorrect}} </p> -->
   </div>
   <div class="like_container">
     <div class="like">
@@ -14,8 +14,7 @@
 
     <p>10</p>
   </div>
-<!-- comment.component.html -->
-<i class="fa-regular fa-square-check" (click)="markTrue(comment.commentId!,tokenC)"></i>
+<i class="fa-regular fa-square-check" [class.green]="comment.isCorrect"  (click)="markTrue(comment.commentId!,tokenC)"></i>
 
 
 </div>

@@ -1,6 +1,7 @@
 <!doctype html>
 <div class="question_container" (click)="navclick()">
   <div class="questionC_up">
+    <p *ngIf="question.solved">Solved</p>
     <p class="question_user">{{ question.email }}</p>
     <p class="question_date">{{ question.creationDate }}</p>
     <p class="question_title">{{ question.title }}</p>

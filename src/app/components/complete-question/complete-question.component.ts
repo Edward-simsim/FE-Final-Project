@@ -56,15 +56,22 @@ export class CompleteQuestionComponent implements OnInit, AfterViewInit {
 
   getComments() {
     console.log("completeQ commnets: " + this.questionId);
+    this.commentSubscription.unsubscribe();
     this.commentSubscription = this.commentService
       .getCommentsByQuestionId(this.questionId)
       .subscribe((comments: Comment[]) => {
         this.commentList = comments;
       });
   }
+  userEmail:string="";
+  creationDate:String = "";
+  isCorrect:boolean=false;
   addComment() {
    console.log("ADD comment triger");
     const comment: Comment = {
+      isCorrect:this.isCorrect,
+      userEmail:this.userEmail,
+      creationDate:this.creationDate,
       text: this.commentForm.value.text || "",
       questionId: this.questionId,
     };

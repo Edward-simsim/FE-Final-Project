@@ -4,8 +4,9 @@ export class Comment {
   }
   commentId?: number;
   questionId: number=0;
-  // userEmail:string='';
+  userEmail:string='';
   text: string = "";
+  isCorrect:boolean=false;
   // nrLikes: number = 0;
-  // creationDate:String = "";
+  creationDate:String = "";
 }

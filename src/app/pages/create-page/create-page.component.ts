@@ -54,6 +54,8 @@ export class CreatePageComponent implements OnInit {
       this.selectedCategories.push(category);
     }
   }
+
+  isSolved: boolean = false;
   addQuestion() {
     console.log("merge?");
     const selectedCategories = this.questionForm.value.categoryIds;
@@ -63,6 +65,7 @@ export class CreatePageComponent implements OnInit {
       description: this.questionForm.value.description || "",
       email: this.questionForm.value.email || "",
       creationDate: this.questionForm.value.date || "",
+      solved:this.isSolved
     };
     console.log("Question Category:", question.categoryIds);
     this.questionService
