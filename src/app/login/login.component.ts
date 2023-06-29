@@ -17,7 +17,7 @@ export class LoginComponent implements AfterViewInit {
   constructor(private http: HttpClient, private loginService: LoginService, private router: Router) { }
 
   ngAfterViewInit(): void {
-    this.initializeGoogleSignIn();
+    // this.initializeGoogleSignIn();
   }
 
   initializeGoogleSignIn(): void {

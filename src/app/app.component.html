@@ -1,54 +1,70 @@
-<div class="container">
-  <nav class="nav">
-    <h1>Skills Overflow</h1>
-    <div class="nav_right">
-      <div class="nav_buttons">
-        <button
-          id="home"
-          type="button"
-          class="nav_button"
-          [class.active]="activePage === 'home'"
-          (click)="navigate_home()"
-        >
-          Home
-        </button>
-        <button
-          id="about"
-          type="button"
-          class="nav_button"
-          [class.active]="activePage === 'about'"
-          (click)="navigate_about()"
-        >
-          About
-        </button>
-        <button
-          id="forum"
-          type="button"
-          class="nav_button"
-          [class.active]="activePage === 'forum'"
-          (click)="navigate_forum()"
-        >
-          Forum
-        </button>
-        <button
-          id="members"
-          type="button"
-          class="nav_button"
-          [class.active]="activePage === 'members'"
-          (click)="navigate_members()"
-        >
-          Members
-        </button>
+<!-- <div class="login d-flex">
+  <div class="img_login">
+    <p>safsafsafasfas</p>
+  </div>
+  <div class="modal_login d-flex justify-content-center align-items-center">
+   <h3 class="title">Log In</h3>
+   <button class="login_btn">Log in with Google</button>
+  </div>
+</div> -->
+
+<div class="app_container">
+  <div class="app_content">
+    <nav class="nav">
+      <h1>Skills Overflow</h1>
+      <div class="nav_right">
+        <div class="nav_buttons">
+          <button
+            id="home"
+            type="button"
+            class="nav_button"
+            [class.active]="activePage === 'home'"
+            (click)="navigate_home()"
+          >
+            Home
+          </button>
+          <button
+            id="about"
+            type="button"
+            class="nav_button"
+            [class.active]="activePage === 'about'"
+            (click)="navigate_about()"
+          >
+            About
+          </button>
+          <button
+            id="forum"
+            type="button"
+            class="nav_button"
+            [class.active]="activePage === 'forum'"
+            (click)="navigate_forum()"
+          >
+            Forum
+          </button>
+          <button
+            id="members"
+            type="button"
+            class="nav_button"
+            [class.active]="activePage === 'members'"
+            (click)="navigate_members()"
+          >
+            Members
+          </button>
+        </div>
+        <div class="nav_profile">
+          <i class="fa-regular fa-bell"></i>
+          <p>User Name</p>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
       </div>
-      <div class="nav_profile">
-        <i class="fa-regular fa-bell"></i>
-        <p>User Name</p>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
+    </nav>
+    <div id="google-sign-in-button"></div>
+    <!-- <button>Log in</button> -->
+
+   
+    <div class="router_container">
+      <router-outlet></router-outlet>
     </div>
-  </nav>
+    <!-- <footer><h4>Skills Overflow</h4></footer> -->
+  </div>
 </div>
-<div class="router_container">
-  <router-outlet></router-outlet>
-</div>
-<footer><h4>Skills Overflow</h4></footer>

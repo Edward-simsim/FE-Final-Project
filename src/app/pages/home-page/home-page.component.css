@@ -3,12 +3,6 @@
   src: url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 }
 
-.home_container {
-  width: 1200px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 
 .main_title h2 {
   font-family: 'Lora', serif;
