@@ -62,6 +62,7 @@ categoryIds = [
       if (params["myPosts"]) {
         setTimeout(() => {
           this.myPostsButton.nativeElement.click();
+          this.showMyPosts();
         });
       }
     });

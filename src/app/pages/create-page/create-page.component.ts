@@ -72,9 +72,10 @@ export class CreatePageComponent implements OnInit {
       .addQuestion(
         question
       )
-      .subscribe();
-    console.log("test after publish");
-    this.navigateToForum();
+      .subscribe(()=> {
+        this.navigateToForum();
+      });
+
   }
 
   navigateToForum() {
@@ -82,5 +83,8 @@ export class CreatePageComponent implements OnInit {
   }
   onSubmit(formValue: any) {
     console.log("Selected categories:", formValue.categorySelect);
+  }
+  nav_back() {
+    window.history.back();
   }
 }

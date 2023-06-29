@@ -1,5 +1,5 @@
 import { QuestionService } from "src/app/service/question/question.service";
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { Comment } from "src/app/models/ comment";
 import { Question } from "src/app/models/question";
@@ -12,7 +12,7 @@ import { Subscription } from "rxjs";
   templateUrl: "./comment.component.html",
   styleUrls: ["./comment.component.css"],
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent implements OnInit,OnDestroy {
   @Input() comment: Comment = new Comment();
   @Input() question: Question = new Question();
   @Input() questionId: number = 0;
@@ -41,11 +41,14 @@ export class CommentComponent implements OnInit {
     this.commentService
       .markCommentAsSolved(commentId, this.tokenC)
       .subscribe(() => {
-        setTimeout(() => {
+       
           this.markQuestionTrue(this.questionId!, this.tokenC);
-        }, 1000); // Delay of 1 second before calling markQuestionTrue
+     
       });
-      this.commentMarkedTrue.emit(commentId);
+      setTimeout(() => {
+        this.commentMarkedTrue.emit(commentId);
+      }, 500);
+    
   }
 
   markQuestionTrue(questionId: number, token: string) {
@@ -58,5 +61,8 @@ export class CommentComponent implements OnInit {
     console.log("mark question Complete");
 
   }
-  
+  ngOnDestroy(): void {
+    this.commentSubscription.unsubscribe();
+    this.questionSubscription.unsubscribe();
+  }
 }
