@@ -19,12 +19,12 @@ export class QuestionService {
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(
-      "https://skills-overflow.ew.r.appspot.com/api/v1/questions/all"
+      "http://localhost:8080/api/v1/questions/all"
     );
   }
   get5Questions(n: number): Observable<Question[]> {
     return this.http.get<Question[]>(
-      `https://skills-overflow.ew.r.appspot.com/api/v1/questions/size?n=${n}`
+      `http://localhost:8080/api/v1/questions/size?n=${n}`
     );
   }
 
@@ -39,7 +39,7 @@ export class QuestionService {
     };
 
     return this.http.post<Question>(
-      "https://skills-overflow.ew.r.appspot.com/api/v1/questions",
+      "http://localhost:8080/api/v1/questions",
       question,
       httpOptions
     );
@@ -49,7 +49,7 @@ export class QuestionService {
     console.log("Service question ID: " + id);
     return this.http
       .get<Question>(
-        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/questionId?questionId=${id}`
+        `http://localhost:8080/api/v1/questions/questionId?questionId=${id}`
       )
       .pipe(
         tap((question: Question) => {
@@ -72,7 +72,7 @@ export class QuestionService {
   }
   
   markQuestionAsSolved(questionId: number, token: string): Observable<any> {
-    const url = `https://skills-overflow.ew.r.appspot.com/api/v1/questions/${questionId}/solved`;
+    const url = `http://localhost:8080/api/v1/questions/${questionId}/solved`;
 
     const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     const options = { headers: headers };
@@ -93,7 +93,7 @@ export class QuestionService {
     const headers = new HttpHeaders().set("jwt", token);
 
     return this.http.get<any>(
-      "https://skills-overflow.ew.r.appspot.com/api/v1/questions/searchBy",
+      "http://localhost:8080/api/v1/questions/searchBy",
       { params, headers }
     );
   }

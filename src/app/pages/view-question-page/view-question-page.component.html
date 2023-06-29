@@ -2,5 +2,6 @@
   <app-complete-question
     [completeQuestion]="question"
     [questionId]="questionId"
+    (commentMarkedTrue)="refreshQuestionData()"
   ></app-complete-question>
 </div>
