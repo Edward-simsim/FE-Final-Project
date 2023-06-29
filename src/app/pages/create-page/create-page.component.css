@@ -1,12 +1,4 @@
-.create_container {
-  padding-top: 40px;
-  width: 1020px;
-  align-items: center;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-}
+
 .nav {
   width: 100%;
   display: flex;
