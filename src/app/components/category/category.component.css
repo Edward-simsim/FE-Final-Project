@@ -1,6 +1,6 @@
 .category_container {
   width: 850px;
-  border: 1px solid black;
+  border: 3px solid  #DBE2EF;
   border-radius: 5px;
   padding: 10px 20px;
   margin: 30px 0;
@@ -8,6 +8,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  
 }
 .category_text {
   width: 340px;

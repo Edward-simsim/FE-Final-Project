@@ -4,14 +4,16 @@
     <mat-form-field>
       <mat-label>Categories</mat-label>
       <mat-select id="select" formControlName="categoryIds" multiple>
-        <mat-option *ngFor="let category of categories" [value]="category.value">
-          {{category.viewValue}}
+        <mat-option
+          *ngFor="let category of categories"
+          [value]="category.value"
+        >
+          {{ category.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    
+
     <div class="create_input">
-    
       <input
         type="text"
         id="title"
@@ -23,12 +25,13 @@
         id="description"
         placeholder="Write your post here"
         formControlName="description"
-        
       ></textarea>
     </div>
   </form>
   <div class="create_buttons">
-    <button type="button" class="btn btn-outline-primary" (click)="nav_back()">Cancel</button>
+    <button type="button" class="btn btn-outline-primary" (click)="nav_back()">
+      Cancel
+    </button>
     <button
       type="button"
       class="btn btn-outline-primary"

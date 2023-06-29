@@ -17,10 +17,11 @@ export class LoginComponent implements AfterViewInit {
   constructor(private http: HttpClient, private loginService: LoginService, private router: Router) { }
 
   ngAfterViewInit(): void {
-    // this.initializeGoogleSignIn();
+    this.initializeGoogleSignIn();
   }
 
   initializeGoogleSignIn(): void {
+    console.log("merge?");
     const checkGapi = (): void => {
       if (typeof google === 'undefined') {
         setTimeout(checkGapi, 100);
@@ -34,6 +35,7 @@ export class LoginComponent implements AfterViewInit {
     };
 
     checkGapi();
+    console.log("merge2");
   }
 
   onLoggedIn(data: { credential: string }): void {

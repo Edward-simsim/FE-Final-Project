@@ -3,7 +3,16 @@
   src: url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 }
 
-
+.container {
+  padding-top: 40px;
+  width: 1020px;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ /* ffd124 */
+}
 .main_title h2 {
   font-family: 'Lora', serif;
   line-height: 40px;
