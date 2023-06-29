@@ -37,4 +37,7 @@ export class AppComponent {
     this.activePage = 'members';
     this.router.navigate(["members"]);
   }
+  isRootUrl(): boolean {
+    return window.location.href !== 'http://localhost:4200/';
+  }
 }

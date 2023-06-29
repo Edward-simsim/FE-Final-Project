@@ -10,7 +10,8 @@
 
 <div class="app_container">
   <div class="app_content">
-    <nav class="nav" *ngIf="activePage !==''">
+
+    <nav class="nav" *ngIf="isRootUrl()">
       <h1>Skills Overflow</h1>
       <div class="nav_right">
         <div class="nav_buttons">
