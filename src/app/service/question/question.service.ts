@@ -59,12 +59,18 @@ export class QuestionService {
   }
 
   getQuestionsByUserEmail(): Observable<Question[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.token}`,
+      }),
+    };
+
     return this.http
-      .get<Question[]>(
-        `https://skills-overflow.ew.r.appspot.com/api/v1/questions/email`
-      )
+      .get<Question[]>(`http://localhost:8080/api/v1/questions/email`, httpOptions)
       .pipe(map((questions) => questions.reverse()));
   }
+  
   markQuestionAsSolved(questionId: number, token: string): Observable<any> {
     const url = `https://skills-overflow.ew.r.appspot.com/api/v1/questions/${questionId}/solved`;
 
