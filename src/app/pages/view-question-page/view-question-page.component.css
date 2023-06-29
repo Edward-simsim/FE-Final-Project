@@ -1,0 +1,10 @@
+.container {
+    padding-top: 40px;
+    width: 1020px;
+    align-items: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   /* ffd124 */
+  }

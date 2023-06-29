@@ -2,12 +2,12 @@
  width: 1200px;
   margin: auto;
   padding: 10px 30px;
-  border: 1px solid black;
+  border: 3px solid  #DBE2EF;
   border-radius: 5px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
 }
 
 .completeQuestionC_up {
@@ -40,22 +40,19 @@
   overflow: hidden;
 }
 
-hr {
-  border: none;
-  border-top: 2px solid black;
-  width: 100%;
-  margin: 20px 0;
-}
+
 
 p {
   margin: 4px;
 }
 
 .completeQuestionC_down {
+  border-bottom: 3px solid #DBE2EF;
   width: 100%;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
+  margin: 20px;
 }
 
 .like {

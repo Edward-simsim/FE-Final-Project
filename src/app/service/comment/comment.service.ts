@@ -19,7 +19,7 @@ export class CommentService {
   getCommentsByQuestionId(questionId: number): Observable<Comment[]> {
     console.log("service Commen " + questionId);
     return this.http.get<Comment[]>(
-      `https://skills-overflow.ew.r.appspot.com/api/v1/comments/questionId?questionId=${questionId}`
+      `http://localhost:8080/api/v1/comments/questionId?questionId=${questionId}`
     );
   }
 
@@ -34,21 +34,21 @@ export class CommentService {
     };
 
     return this.http.post<Comment>(
-      "https://skills-overflow.ew.r.appspot.com/api/v1/comments",
+      "http://localhost:8080/api/v1/comments",
       comment,
       httpOptions
     );
   }
 
   markCommentAsSolved(commentId: number, token: string): Observable<any> {
-    const url = `https://skills-overflow.ew.r.appspot.com/api/v1/comments/${commentId}/solved`;
+    const url = `http://localhost:8080/api/v1/comments/${commentId}/solved`;
     const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     const options = { headers: headers };
 
     return this.http.put(url, {}, options);
   }
   markQuestionAsSolved(questionId: number, token: string): Observable<any> {
-    const url = `https://skills-overflow.ew.r.appspot.com/api/v1/comments/${questionId}/solved`;
+    const url = `http://localhost:8080/api/v1/comments/${questionId}/solved`;
 
     const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     const options = { headers: headers };

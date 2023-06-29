@@ -1,13 +1,14 @@
 .router_container {
-  min-height: 900px;
+width: 100%;
 
 }
 .app_container {
+  width: 1500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  
 }
 .app_content {
   width: 1400px;
