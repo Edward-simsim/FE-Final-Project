@@ -10,6 +10,7 @@
 
 <div class="app_container">
   <div class="app_content">
+
     <nav class="nav" *ngIf="isRootUrl()">
       <h1>Skills Overflow</h1>
       <div class="nav_right">
@@ -65,6 +66,6 @@
     <div class="router_container">
       <router-outlet></router-outlet>
     </div>
-    <!-- <footer><h4>Skills Overflow</h4></footer> -->
+    <footer *ngIf="activePage !==''"><h4>Skills Overflow</h4></footer>
   </div>
 </div>
