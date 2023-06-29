@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Lora';
+  src: url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+}
+
 .home_container {
   width: 1200px;
   display: flex;
@@ -5,9 +10,17 @@
   width: 100%;
 }
 
+.main_title h2 {
+  font-family: 'Lora', serif;
+  line-height: 40px;
+}
+
+
+
 img {
   width: 600px;
 }
+
 h2 {
   font-size: 45px;
 }
@@ -20,6 +33,7 @@ h2 {
   display: flex;
   flex-direction: row;
 }
+
 .text_container1 {
   display: flex;
   flex-direction: column;
@@ -28,48 +42,100 @@ h2 {
   justify-content: center;
   padding-left: 40px;
   text-align: center;
+  font-family: 'Lora', serif;
 }
+
 button {
   width: 150px;
 }
+
 .second_article {
-    justify-content: center;
-    width: 1200px;
+  justify-content: center;
+  width: 1200px;
   display: flex;
   flex-direction: row;
   margin: auto;
   padding: 30px;
 }
+
 .text_container2 {
-    margin-top: 30px;
-    display: flex;
+  margin-top: 30px;
+  display: flex;
   flex-direction: column;
   width: 530px;
   align-items: center;
   justify-content: center;
   padding-left: 40px;
   text-align: center;
+  font-family: 'Lora', serif;
 }
+
+.text_container2_title h2 {
+  font-family: 'Lora', serif;
+}
+
 .down_article {
-    margin-top: 50px;
-    width: 1200px;
+  margin-top: 50px;
+  width: 1200px;
   display: flex;
   flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    margin: auto;
-    padding: 30px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  padding: 30px;
+  font-family: 'Lora', serif;
 }
-.img_grup {
-    align-items: center;
-    width: 1200px;
-    display: flex;
- justify-content:center;
- padding: 20px 40px;
 
+.down_article_title h2 {
+  font-family: 'Lora', serif;
 }
+
+.down_article h3 {
+  font-family: 'Lora', serif;
+}
+
+.down_article h3+p {
+  font-family: 'Lora', serif;
+  text-align: center;
+}
+
+.img_group {
+  align-items: center;
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 40px;
+}
+
 .img1 {
-    width: 300px;
-    margin: 5px 50px;
+  width: 300px;
+  margin: 5px 50px;
+}
+
+p {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/*ANIMATIONS*/
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-animation {
+  animation: slideIn 1s ease-in-out;
 }

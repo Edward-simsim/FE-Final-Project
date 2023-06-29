@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(''); // Add this line
+  private tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
@@ -19,7 +19,7 @@ export class LoginService {
     this.isLoggedInSubject.next(true);
 
     // Update the token
-    this.tokenSubject.next(token); // Update this line
+    this.tokenSubject.next(token);
   }
 
   getToken(): Observable<string> {

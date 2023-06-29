@@ -38,32 +38,21 @@ export class LoginComponent implements AfterViewInit {
 
   onLoggedIn(data: { credential: string }): void {
     console.log('onLoggedIn ', data.credential);
-    
-   this.loginService.userHasLoggedIn(data.credential)
-   this.router.navigate(['/home']);
+    this.loginService.userHasLoggedIn(data.credential)
+    this.router.navigate(['/home']);
   }
-
-
 
   // onSignIn(googleUser: any) {
-  //   console.log("signed in");
   //   const idToken = googleUser.getAuthResponse().id_token;
-    
+  //   // Send the idToken to your backend for verification and further processing
+  //   //this.sendTokenToBackend(idToken);
+  //   const profile = googleUser.getBasicProfile();
+  //   const userName = profile.getName();
   //   this.loginService.userHasLoggedIn(idToken);
-    
+  //   this.showLoggedInModal(userName);
+  //   this.router.navigate(['/home-page']);
+
   // }
-
-  onSignIn(googleUser: any) {
-    const idToken = googleUser.getAuthResponse().id_token;
-    // Send the idToken to your backend for verification and further processing
-    //this.sendTokenToBackend(idToken);
-    const profile = googleUser.getBasicProfile();
-    const userName = profile.getName();
-    this.loginService.userHasLoggedIn(idToken);
-    this.showLoggedInModal(userName);
-    this.router.navigate(['/home-page']);
-
-  }
 
   onSignInFailure(error: any) {
     console.log('Sign-in failed:', error);
