@@ -1,8 +1,9 @@
 <div class="container">
   <article class="up_article">
     <div class="text_container1">
-      <div class="main_title"  [@slideInAnimation]>
+      <div class="main_title" [@slideInAnimation]>
         <h2>Skills Overflow</h2>
+
       </div>
       <p>Your Question and Answer Board</p>
       <button type="button" class="btn btn-outline-primary" (click)="nav_forum()">Forum</button>
@@ -26,7 +27,7 @@
     <div class="down_article_title" [@slideInAnimation]>
       <h2>Issues We Cover</h2>
     </div>
-   
+
     <p>Your Place</p>
     <div class="img_group">
       <div class="img_text">
@@ -51,7 +52,10 @@
       </div>
     </div>
   </article>
+
+  <div class="button-container">
+    <button type="button"
+    class="btn btn-outline-primary" (click)="signOut()">
+    <span class="text-signout">Sign out</span>
+    </button>
 </div>
-
-
-

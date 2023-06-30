@@ -30,7 +30,7 @@
             [class.active]="activePage === 'about'"
             (click)="navigate_about()"
           >
-            About
+            <span class="about-text">About</span>
           </button>
           <button
             id="forum"
@@ -39,7 +39,7 @@
             [class.active]="activePage === 'forum'"
             (click)="navigate_forum()"
           >
-            Forum
+            <span class="forum-text">Forum</span>
           </button>
           <button
             id="members"
@@ -48,13 +48,13 @@
             [class.active]="activePage === 'members'"
             (click)="navigate_members()"
           >
-            Members
+            <span class="members-text">Members</span>
           </button>
         </div>
         <div class="nav_profile">
-          <i class="fa-regular fa-bell"></i>
-          <p>User Name</p>
-          <i class="fa-solid fa-caret-down"></i>
+       
+       <span class="nav_button">User Name</span>
+          
         </div>
       </div>
     </nav>

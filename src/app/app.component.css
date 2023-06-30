@@ -36,6 +36,10 @@ width: 100%;
   background-color: white;
   border: 0;
   height: 50px;
+  font-family: 'Lora',serif;
+  font-size: 25px;
+  color: #112D4E;
+  font-weight: bold;
 }
 .nav_right {
   display: flex;
@@ -75,18 +79,25 @@ footer {
     position: absolute;
   
   }
-  
   .img_login {
     background-image: url("https://images.unsplash.com/photo-1634647608224-11b088789061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
     width: 50%;
     height: 100vh;
   }
   .modal_login {
-width: 50%;
-background-color: white;
-  }
+ width: 50%;
+ background-color: white;
+}
+
+
+
   .login_btn {
     background: none;
     padding:10px 16px;
     border: 1px solid #a2a1a1;
+  }
+
+  .app_container .app_content h1{
+    font-family: 'Lora',serif;
+    color: #112D4E;
   }

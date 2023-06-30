@@ -6,12 +6,13 @@
 .container {
   padding-top: 40px;
   width: 1020px;
+  height: 100%;
   align-items: center;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
- /* ffd124 */
+  /* background-color: #DBE2EF; */
 }
 .main_title h2 {
   font-family: 'Lora', serif;
@@ -46,6 +47,7 @@ h2 {
   padding-left: 40px;
   text-align: center;
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 button {
@@ -71,10 +73,12 @@ button {
   padding-left: 40px;
   text-align: center;
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 .text_container2_title h2 {
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 .down_article {
@@ -88,19 +92,23 @@ button {
   margin: auto;
   padding: 30px;
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 .down_article_title h2 {
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 .down_article h3 {
   font-family: 'Lora', serif;
+  color:#112D4E;
 }
 
 .down_article h3+p {
   font-family: 'Lora', serif;
   text-align: center;
+  color:#112D4E;
 }
 
 .img_group {
@@ -123,6 +131,7 @@ p {
   text-align: justify;
   margin-top: 20px;
   margin-bottom: 20px;
+  color:#112D4E;
 }
 
 /*ANIMATIONS*/
@@ -141,4 +150,8 @@ p {
 
 .slide-in-animation {
   animation: slideIn 1s ease-in-out;
+}
+
+.text-signout{
+  font-family: 'Lora', serif;
 }

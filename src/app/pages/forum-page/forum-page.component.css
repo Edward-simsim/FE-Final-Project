@@ -60,12 +60,17 @@ h1 {
   opacity: 1;
 }
 .content_img_big {
-  color: rgb(164, 210, 173);
+  color:#112D4E;
   font-size: 60px;
+  font-family: 'Lora',serif;
+  margin-bottom: 30px;
+  
 }
 .content_img_small {
-  color: #cbffcf;
-  font-size: 23px;
+  color: #112D4E;
+  font-size: 35px;
+  font-family: 'Lora',serif;
+
 }
 .content_up {
   display: flex;
@@ -138,4 +143,25 @@ height: 65px;
 }
 .searchBtn {
   height: 42px;
+}
+
+/*Style the words*/
+.category-text{
+  font-family: 'Lora', serif;
+}
+
+.all-posts-text{
+  font-family: 'Lora',serif;
+}
+
+.my-posts-text{
+  font-family: 'Lora',serif;
+}
+
+.create-post-text{
+  font-family: 'Lora',serif;
+}
+
+.search-text{
+  font-family: 'Lora',serif;
 }
