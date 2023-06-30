@@ -44,34 +44,15 @@ export class LoginComponent implements AfterViewInit {
     this.router.navigate(['/home']);
   }
 
-  // onSignIn(googleUser: any) {
-  //   const idToken = googleUser.getAuthResponse().id_token;
-  //   // Send the idToken to your backend for verification and further processing
-  //   //this.sendTokenToBackend(idToken);
-  //   const profile = googleUser.getBasicProfile();
-  //   const userName = profile.getName();
-  //   this.loginService.userHasLoggedIn(idToken);
-  //   this.showLoggedInModal(userName);
-  //   this.router.navigate(['/home-page']);
-
-  // }
-
-  onSignInFailure(error: any) {
-    console.log('Sign-in failed:', error);
+  signOut(): void {
+    console.log("merge");
+    google.accounts.id.disableAutoSelect();
+    google.accounts.id.revoke(localStorage.getItem('token'), () => {
+      this.loginService.userHasLoggedOut();
+      this.router.navigate(['/']);
+    });
   }
-
-
-  showLoggedInModal(userName: string) {
-    const modalElement = document.getElementById('loggedInModal');
-    if (modalElement) {
-      const userNameElement = modalElement.querySelector('#userName');
-      if (userNameElement) {
-        userNameElement.textContent = `Signed in as ${userName}`;
-      }
-      modalElement.style.display = 'block';
-    }
-  }
-
+  
 }
 
 

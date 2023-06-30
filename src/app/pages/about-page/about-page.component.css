@@ -25,12 +25,15 @@
 }
 .text h2{
   font-family: 'Lora', serif;
+  font-weight: bold;
 }
 
 p {
   font-family: 'Lora', serif;
   text-align: justify;
+  /* line-height: 1.5; */
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: larger;
+  color: #112D4E;
 }

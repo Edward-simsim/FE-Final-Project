@@ -1,132 +1,135 @@
 
-<div class="container">
-  <div class="content_up_nav">
-    <div class="content_up_buttons">
-      <div class="btn_left">
+  <div class="container">
+    <div class="content_up_nav">
+      <div class="content_up_buttons">
+        <div class="btn_left">
+          <button
+          id="categories"
+          type="button"
+          class="btn btn-outline-primary"
+          [class.active]="activeButtonId === 'categories'"
+          (click)="showCategory()"
+        >
+        <span class="category-text">Categories</span>
+        </button>
         <button
-        id="categories"
-        type="button"
-        class="btn btn-outline-primary"
-        [class.active]="activeButtonId === 'categories'"
-        (click)="showCategory()"
-      >
-        Categories
-      </button>
-      <button
-        id="all_posts"
-        type="button"
-        class="btn btn-outline-primary"
-        [class.active]="activeButtonId === 'allPosts'"
-        (click)="showAllPosts()"
-      >
-        All posts
-      </button>
-      <button
-        id="my_posts"
-        type="button"
-        class="btn btn-outline-primary"
-        #myPostsButton
-        [class.active]="activeButtonId === 'myPosts'"
-        (click)="showMyPosts()"
-      >
-        My Posts
-      </button>
-      </div>
-      <div class="btn_right">
+          id="all_posts"
+          type="button"
+          class="btn btn-outline-primary"
+          [class.active]="activeButtonId === 'allPosts'"
+          (click)="showAllPosts()"
+        >
+        <span class="all-posts-text">All posts</span>
+        </button>
         <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="nav_to_create()"
-      >
-        Create post
-      </button>
+          id="my_posts"
+          type="button"
+          class="btn btn-outline-primary"
+          #myPostsButton
+          [class.active]="activeButtonId === 'myPosts'"
+          (click)="showMyPosts()"
+        >
+        <span class="my-posts-text">My posts</span>
+        </button>
+        </div>
+        <div class="btn_right">
+          <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="nav_to_create()"
+        >
+        <span class="create-post-text">Create post</span>
+        </button>
+        </div>
       </div>
-    </div>
-
-    <div class="content_img">
-      <p class="content_img_big">Questions and Answers</p>
-      <p class="content_img_small">
-        Welcome! Have a look around and join the discussions.
-      </p>
-    </div>
-    <div class="create_button_container">
-      <div class="search_group">
-        <form class="input_container" [formGroup]="searchForm">
-          <div class="content_up_search">
-            <input
-              type="text"
-              class="input"
-              name="keyword"
-              id="search"
-              placeholder="search"
-              formControlName="keyword"
-            />
+  
+      <div class="content_img">
+        <p class="content_img_big">
+         Questions And Answers
+        <p class="content_img_small">
+          Welcome! Have a look around and join the discussions.
+        </p>
+      </div>
+      <div class="create_button_container">
+        <div class="search_group">
+          <form class="input_container" [formGroup]="searchForm">
+            <div class="content_up_search">
+              <input
+                type="text"
+                class="input"
+                name="keyword"
+                id="search"
+                placeholder="search"
+                formControlName="keyword"
+              />
+            </div>
+  
+            <mat-form-field>
+              <mat-label>Categories</mat-label>
+              <mat-select id="select" formControlName="categoryIds" multiple>
+                <mat-option
+                  *ngFor="let category of categoryIds"
+                  [value]="category.value"
+                >
+                  {{ category.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+          <div class="search_buton">
+            <button
+              type="button"
+              class="btn btn-outline-primary searchBtn"
+              (click)="nav_to_search()"
+            >
+            <span class="search-text">search</span>
+            </button>
+       
           </div>
-
-          <mat-form-field>
-            <mat-label>Categories</mat-label>
-            <mat-select id="select" formControlName="categoryIds" multiple>
-              <mat-option
-                *ngFor="let category of categoryIds"
-                [value]="category.value"
-              >
-                {{ category.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-        <div class="search_buton">
-          <button
-            type="button"
-            class="btn btn-outline-primary searchBtn"
-            (click)="nav_to_search()"
-          >
-            search
-          </button>
-     
         </div>
       </div>
     </div>
-  </div>
-  <main>
-    <ng-container *ngIf="isCategory; else allPostsBlock">
-      <app-category
-        *ngFor="let category of categoryList"
-        [category]="category"
-        (newGetArticleEvent)="getCategory()"
-      ></app-category>
-      <app-question
-        *ngFor="let question of questionList"
-        [question]="question"
-        (newGetArticleEvent)="get5Questions(n)"
-      ></app-question>
-    </ng-container>
-    <ng-template #allPostsBlock>
-      <ng-container *ngIf="isAllPosts; else myPostsBlock">
-        <div class="app-category">
-          <app-question
-            *ngFor="let question of visibleQuestions"
-            [question]="question"
-            (newGetArticleEvent)="getQuestions()"
-          ></app-question>
-          <button
-            id="load_more"
-            type="button"
-            class="btn btn-outline-primary"
-            *ngIf="visibleQuestions.length < questionList.length"
-            (click)="loadMoreQuestions()"
-          >
-            Load More
-          </button>
-        </div>
-      </ng-container>
-      <ng-template #myPostsBlock>
+    <main>
+      <ng-container *ngIf="isCategory; else allPostsBlock">
+        <app-category
+          *ngFor="let category of categoryList"
+          [category]="category"
+          (newGetArticleEvent)="getCategory()"
+        ></app-category>
         <app-question
-          *ngFor="let question of questionMyPostsList"
+          *ngFor="let question of questionList"
           [question]="question"
-          (newGetArticleEvent)="getMyPosts()"
+          (newGetArticleEvent)="get5Questions(n)"
         ></app-question>
+      </ng-container>
+      <ng-template #allPostsBlock>
+        <ng-container *ngIf="isAllPosts; else myPostsBlock">
+          <div class="app-category">
+            <app-question
+              *ngFor="let question of visibleQuestions"
+              [question]="question"
+              (newGetArticleEvent)="getQuestions()"
+            ></app-question>
+            <button
+              id="load_more"
+              type="button"
+              class="btn btn-outline-primary"
+              *ngIf="visibleQuestions.length < questionList.length"
+              (click)="loadMoreQuestions()"
+            >
+              Load More
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #myPostsBlock>
+          <app-question
+            *ngFor="let question of questionMyPostsList"
+            [question]="question"
+            (newGetArticleEvent)="getMyPosts()"
+          ></app-question>
+        </ng-template>
       </ng-template>
-    </ng-template>
-  </main>
-</div>
+    </main>
+  </div>
+  
+

@@ -14,6 +14,8 @@ export class LoginService {
 
   userHasLoggedIn(token: string): void {
     localStorage.setItem('token', token);
+    this.isLoggedInSubject.next(true);
+    this.tokenSubject.next(token);
 
     // Update the login status
     this.isLoggedInSubject.next(true);
@@ -24,5 +26,11 @@ export class LoginService {
 
   getToken(): Observable<string> {
     return this.tokenSubject.asObservable();
+  }
+  userHasLoggedOut(): void {
+    console.log('User has logged out');
+    localStorage.removeItem('token');
+    this.isLoggedInSubject.next(false);
+    this.tokenSubject.next('');
   }
 }

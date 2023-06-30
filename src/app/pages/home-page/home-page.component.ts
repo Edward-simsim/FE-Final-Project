@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-home-page',
@@ -17,7 +18,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class HomePageComponent {
 
-  constructor( private router: Router,) {};
+  constructor( private router: Router,private loginService: LoginService) {};
   nav_forum() {
     console.log("navigate forum");
     this.router.navigate(["forum"])
@@ -25,5 +26,10 @@ export class HomePageComponent {
   nav_about() {
     console.log("navigate about");
     this.router.navigate(["about"])
+  }
+
+  signOut(): void {
+    this.loginService.userHasLoggedOut();
+    this.router.navigate(['']);
   }
 }
