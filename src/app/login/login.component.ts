@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,32 +10,29 @@ declare const google: any;
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent implements AfterViewInit {
   isLoggedIn: boolean = false;
   loggedInUserName: string = '';
-
+  @ViewChild("googleBtn", { read: ElementRef }) googleBtn: ElementRef | undefined;
   constructor(private http: HttpClient, private loginService: LoginService, private router: Router) { }
 
   ngAfterViewInit(): void {
-    // this.initializeGoogleSignIn();
+    this.initializeGoogleSignIn();
   }
 
   initializeGoogleSignIn(): void {
     console.log("merge?");
-    const checkGapi = (): void => {
-      if (typeof google === 'undefined') {
-        setTimeout(checkGapi, 100);
-      } else {
         google.accounts.id.initialize({
           client_id: '585048238735-n4e8m2puplpnduoh3dfkss4i49mje46s.apps.googleusercontent.com',
           callback: this.onLoggedIn.bind(this)
         });
-        google.accounts.id.prompt();
-      }
-    };
-
-    checkGapi();
-    console.log("merge2");
+        // google.accounts.id.prompt();
+        google.accounts.id.renderButton(
+          this.googleBtn?.nativeElement,
+          { theme: "filled_black", type:"icon", size: "large" ,logo_alignment: "center"}
+        );
   }
 
   onLoggedIn(data: { credential: string }): void {

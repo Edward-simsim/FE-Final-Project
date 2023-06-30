@@ -5,18 +5,11 @@
   position: absolute;
   left: 0;
 }
-.img_login {
-  background-image: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGxhcHRvcCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60");
-  background-size: 100% auto;
-  background-position: left-center;
-  width: 50vw; 
-  height: 100vh;
-  margin: 0;
-}
+
 
 .modal_login {
   width: 50vw;
-  background-color: white;
+  background-color: #DBE2EF;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -27,7 +20,13 @@
   background: none;
   padding: 10px 16px;
   border: 1px solid #a2a1a1;
+  color: #112D4E;
 }
+
+.btn-outline-primary{
+  color:#112D4E;
+}
+
 
 .text-signin{
   font-family: 'Lora', serif;
