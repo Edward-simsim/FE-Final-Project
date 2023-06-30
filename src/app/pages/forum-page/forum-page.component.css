@@ -1,11 +1,12 @@
-.container {
+.container_box {
   padding-top: 40px;
-  width: 1500px;
+  width: 100%;
   align-items: center;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+padding: 35px 26px 0 26px;
  /* ffd124 */
 }
 .nav {
@@ -25,6 +26,7 @@
   flex-direction: row;
   align-items: center;
   margin-right: 50px;
+
 }
 
 
@@ -52,6 +54,7 @@ h1 {
   background-image: url("https://static.wixstatic.com/media/11062b_6c65abe3f7874b7480ff561450284bfe~mv2.jpg/v1/fit/w_2443,h_1629,al_c,q_80/file.webp");
   background-size: cover;
   width: 100%;
+
   background-position: center;
   display: flex;
   justify-content: center;
@@ -114,7 +117,7 @@ input::placeholder {
   margin: 20px 150px 0 0;
 }
 .nav_button.active {
-  color: rgb(1, 118, 253);
+  background-color:#0b69d4;
 }
 .search_group {
   display: flex;
@@ -138,30 +141,19 @@ mat-form-field {
 height: 65px;
   border: none;
 }
-.search_buton {
-  padding-bottom: 21px;
-}
-.searchBtn {
-  height: 42px;
-}
 
-/*Style the words*/
-.category-text{
-  font-family: 'Lora', serif;
-}
 
-.all-posts-text{
-  font-family: 'Lora',serif;
-}
 
-.my-posts-text{
-  font-family: 'Lora',serif;
-}
-
-.create-post-text{
-  font-family: 'Lora',serif;
-}
-
-.search-text{
-  font-family: 'Lora',serif;
+.nav_btn {
+  width: 130px;
+  height: 30px;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+   font-family: 'Lora', serif;
+   background-color: #F9F7F7;
+   color:#112D4E  ;
+   border: 2px solid #112D4E;
+   border-radius: 5px;
+ 
 }

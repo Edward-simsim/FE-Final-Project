@@ -1,18 +1,8 @@
-<!-- <div class="login d-flex">
-  <div class="img_login">
-    <p>safsafsafasfas</p>
-  </div>
-  <div class="modal_login d-flex justify-content-center align-items-center">
-   <h3 class="title">Log In</h3>
-   <button class="login_btn">Log in with Google</button>
-  </div>
-</div> -->
-
 <div class="app_container">
   <div class="app_content">
     <nav class="nav" *ngIf="isRootUrl()">
-      <h1>Skills Overflow</h1>
-      <div class="nav_right">
+      <h2>Skills Overflow</h2>
+      
         <div class="nav_buttons">
           <button
             id="home"
@@ -51,14 +41,11 @@
             <span class="members-text">Members</span>
           </button>
         </div>
-        <div class="nav_profile">
        
-       <span class="nav_button">User Name</span>
-          
-        </div>
-      </div>
+     
+      <button class="nav_button">User Name</button>
     </nav>
-    <router-outlet></router-outlet>
+    <router-outlet class="router_container"></router-outlet>
     <footer *ngIf="isRootUrl()"><h4>Skills Overflow</h4></footer>
   </div>
 </div>
