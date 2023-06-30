@@ -4,8 +4,8 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
+  ViewEncapsulation,
 } from "@angular/core";
-
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -18,6 +18,7 @@ import { QuestionService } from "src/app/service/question/question.service";
   selector: "app-forum-page",
   templateUrl: "./forum-page.component.html",
   styleUrls: ["./forum-page.component.css"],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ForumPageComponent implements OnInit, OnDestroy {
   constructor(
@@ -31,8 +32,8 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   @ViewChild("myPostsButton") myPostsButton!: ElementRef;
 
   selectedSearchCategories: number[] = [];
-searchForm!:FormGroup;
-categoryIds = [
+  searchForm!: FormGroup;
+  categoryIds = [
     { value: 1, viewValue: "One" },
     { value: 2, viewValue: "Two" },
     { value: 3, viewValue: "Three" },
@@ -55,9 +56,9 @@ categoryIds = [
   questionUserEmail: string = "test1@gmail";
   activeButtonId: string = "";
 
-  
-  ngOnInit(): void { 
-      this.createSearchForm();
+  ngOnInit(): void {
+    
+    this.createSearchForm();
     this.activatedRoute.queryParams.subscribe((params) => {
       if (params["myPosts"]) {
         setTimeout(() => {
@@ -67,22 +68,21 @@ categoryIds = [
       }
     });
     const categorySearchControl = this.searchForm.get("category");
-    if(categorySearchControl) {
+    if (categorySearchControl) {
       categorySearchControl.valueChanges.subscribe((val) => {
-        this.selectedSearchCategories =val.map(Number);
-      })
+        this.selectedSearchCategories = val.map(Number);
+      });
     }
-    console.log("createSearchForm : " );
+    console.log("createSearchForm : ");
     this.showCategory();
   }
-createSearchForm() {
-  this.searchForm=this.formBuilder.group({
-    categoryIds:[[]],
-    keyword:['']
-    
-  })
-  
-}
+ 
+  createSearchForm() {
+    this.searchForm = this.formBuilder.group({
+      categoryIds: [[]],
+      keyword: [""],
+    });
+  }
 
   showCategory() {
     this.activeButtonId = "categories";
@@ -97,7 +97,6 @@ createSearchForm() {
   }
   showAllPosts() {
     this.activeButtonId = "allPosts";
-    console.log("All posts");
     this.isAllPosts = true;
     this.isCategory = false;
     this.isMyPosts = false;
@@ -105,7 +104,6 @@ createSearchForm() {
     this.questionList = [];
     this.categoryList = [];
     this.getQuestions();
-
   }
   showMyPosts() {
     this.activeButtonId = "myPosts";
@@ -116,13 +114,12 @@ createSearchForm() {
     this.questionList = [];
     this.categoryList = [];
     this.getMyPosts();
-
   }
   getMyPosts() {
     console.log("getMyPosts : " + this.questionMyPostsList);
     this.questionSubscription = this.questionService
       .getQuestionsByUserEmail()
-      .subscribe((questionsMy:Question[]) => {
+      .subscribe((questionsMy: Question[]) => {
         this.questionMyPostsList = questionsMy;
       });
   }
@@ -147,7 +144,7 @@ createSearchForm() {
       .subscribe((questions: Question[]) => {
         console.log("Questions:", questions);
         this.questionList = questions;
-        console.log("questionList(forum.ts) "+ questions);
+        console.log("questionList(forum.ts) " + questions);
         this.loadVisibleQuestions();
         console.log("visibleQuestions(forum.ts) " + questions);
       });
@@ -177,7 +174,9 @@ createSearchForm() {
 
   nav_to_search() {
     const { keyword, categoryIds } = this.searchForm.value;
-    this.router.navigate(['/search'], { queryParams: { keyword, categoryIds } });
+    this.router.navigate(["/search"], {
+      queryParams: { keyword, categoryIds },
+    });
   }
 
   ngOnDestroy(): void {
