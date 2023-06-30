@@ -1,4 +1,4 @@
-<div class="container_box">
+<div  class="container_box">
   <div class="content_up_nav">
     <div class="content_up_buttons">
       <div class="btn_left">
@@ -12,16 +12,16 @@
           Categories
         </button>
         <button
-          id="all_posts"
+          id="allPosts"
           type="button"
           class="nav_btn"
           [class.active]="activeButtonId === 'allPosts'"
-          (click)="showAllPosts()"
+          (click)="showAllPosts()"x
         >
           All posts
         </button>
         <button
-          id="my_posts"
+          id="myPosts"
           type="button"
           class="nav_btn"
           #myPostsButton
@@ -42,40 +42,36 @@
       <p class="content_img_big">Questions And Answers</p>
     </div>
     <div class="create_button_container">
-      <div class="search_group">
-        <form class="input_container" [formGroup]="searchForm">
-          <div class="content_up_search">
-            <input
-              type="text"
-              class="input"
-              name="keyword"
-              id="search"
-              placeholder="search"
-              formControlName="keyword"
-            />
-          </div>
+      <form class="input_container" [formGroup]="searchForm">
+        <input
+          type="text"
+          class="input"
+          name="keyword"
+          id="search"
+          placeholder="Search"
+          formControlName="keyword"
+        />
 
-          <mat-form-field>
-            <mat-label>Categories</mat-label>
-            <mat-select id="select" formControlName="categoryIds" multiple>
-              <mat-option
-                *ngFor="let category of categoryIds"
-                [value]="category.value"
-              >
-                {{ category.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-        <div class="search_buton">
-          <button type="button" class="nav_btn" (click)="nav_to_search()">
-            search
-          </button>
-        </div>
+        <mat-form-field>
+          <mat-label>Categories</mat-label>
+          <mat-select id="select" formControlName="categoryIds" multiple>
+            <mat-option
+              *ngFor="let category of categoryIds"
+              [value]="category.value"
+            >
+              {{ category.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="search_buton">
+        <button type="button" class="nav_btn" (click)="nav_to_search()">
+          Search
+        </button>
       </div>
     </div>
   </div>
-  <main>
+  <div class="display_content">
     <ng-container *ngIf="isCategory; else allPostsBlock">
       <app-category
         *ngFor="let category of categoryList"
@@ -115,5 +111,6 @@
         ></app-question>
       </ng-template>
     </ng-template>
-  </main>
+  </div>
 </div>
+

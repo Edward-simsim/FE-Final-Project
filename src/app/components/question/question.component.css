@@ -1,5 +1,5 @@
 .question_container {
-  width: 850px;
+  width:950px;
   margin: 30px 0;
   padding: 10px 30px;
   border: 3px solid  #DBE2EF;
@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color:#F9F7F7 ;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
