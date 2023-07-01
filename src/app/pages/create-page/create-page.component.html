@@ -21,9 +21,8 @@
           id="title"
           placeholder="Give this post a title" 
           formControlName="title"
-        />
         
-        <!--TO DO-->
+        />
         <textarea
           class="description"
           id="description"
@@ -33,12 +32,12 @@
       </div>
     </form>
     <div class="create_buttons">
-      <button type="button" class="btn btn-outline-primary" (click)="nav_back()">
+      <button type="button" class="cancel_btn" (click)="nav_back()">
         Cancel
       </button>
       <button
         type="button"
-        class="btn btn-outline-primary"
+        class="publish_btn"
         (click)="addQuestion()"
       >
         Publish
