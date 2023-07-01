@@ -32,7 +32,12 @@
         </button>
       </div>
       <div class="btn_right">
-        <button type="button" class="nav_btn" (click)="nav_to_create()">
+        <button  id="createPost" 
+        type="button" 
+        class="nav_btn" 
+        [class.active]="activeButtonId === 'createPost'"
+        (click)="nav_to_create()"
+        >
           Create post
         </button>
       </div>

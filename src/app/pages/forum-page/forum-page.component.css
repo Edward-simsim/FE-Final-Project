@@ -122,6 +122,19 @@ h1 {
   border: 1px solid #112d4e;
   border-radius: 5px;
 }
+
+.btn_right{
+  width: 130px;
+  height: 30px;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Lora", serif;
+  background-color: #f9f7f7;
+  color: #112d4e;
+  border: 1px solid #112d4e;
+  border-radius: 5px;
+}
 .active {
   background-color: #dbe2ef;
 }

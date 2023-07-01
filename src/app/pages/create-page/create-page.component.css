@@ -8,6 +8,12 @@
   justify-content: center;
   /* ffd124 */
 }
+
+.container_box h2{
+  font-family: 'Lora', serif;
+  color: #112d4e;      
+  font-weight: bold;
+}
 .input_container {
   width: 100vh;
   border: 3px solid #dbe2ef;
@@ -32,6 +38,11 @@ input {
   flex-direction: column;
   margin-top: 20px;
 }
+
+.create_input input::placeholder {
+  font-family: 'Lora', serif; 
+  color: #112d4e;      
+}
 .input_container {
   width: 100%;
   padding-left: 50px;
@@ -45,6 +56,10 @@ input {
   overflow-y: auto;
   border: none;
   outline: none;
+}
+.description::placeholder {
+  font-family: 'Lora', serif; 
+  color: #112d4e;  
 }
 mat-form-field {
   background-color: #f9f7f7;
@@ -149,4 +164,9 @@ mat-form-field.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
 mat-form-field.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
   width: 200px !important;
   
+}
+
+.container_box custom-font{
+  font-family: 'Lora', serif;
+
 }
