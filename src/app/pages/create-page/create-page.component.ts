@@ -1,5 +1,5 @@
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { QuestionService } from "src/app/service/question/question.service";
 import { Question } from "src/app/models/question";
@@ -8,6 +8,7 @@ import { Question } from "src/app/models/question";
   selector: "app-create-page",
   templateUrl: "./create-page.component.html",
   styleUrls: ["./create-page.component.css"],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CreatePageComponent implements OnInit {
   selectedCategories: number[] = [];
