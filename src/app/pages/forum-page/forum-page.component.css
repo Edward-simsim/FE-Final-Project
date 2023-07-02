@@ -134,23 +134,23 @@ mat-form-field {
   display: flex;
   width: 200px;
   height: 33px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-top: 1px solid #112d4e;
   border-bottom: 1px solid #112d4e;
-  border-right: 1px solid #112d4e;
-  border-left: none;
+  border-left: 1px solid #112d4e;
+  border-right: none;
 }
 .content_up_search {
   height: 30px;
 }
 .input {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-top: 1px solid #112d4e;
   border-bottom: 2px solid #112d4e;
-  border-left: 1px solid #112d4e;
-  border-right: none;
+  border-right: 1px solid #112d4e;
+  border-left: none;
   width: 400px;
   font-size: 25px;
   background-color: #f9f7f7;

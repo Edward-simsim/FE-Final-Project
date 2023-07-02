@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   activePage: string = '';
-
+  imagePath = 'assets/img/logo.jpg'
   navigate_forum() {
     this.activePage = 'forum';
     const navigationExtras: NavigationExtras = {

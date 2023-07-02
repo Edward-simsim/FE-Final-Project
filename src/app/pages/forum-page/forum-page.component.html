@@ -47,14 +47,6 @@
     </div>
     <div class="create_button_container">
       <form class="input_container" [formGroup]="searchForm">
-        <input
-          type="text"
-          class="input"
-          name="keyword"
-          id="search"
-          placeholder="Search"
-          formControlName="keyword"
-        />
 
         <mat-form-field>
           <mat-label>Categories</mat-label>
@@ -67,12 +59,19 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <input
+          type="text"
+          class="input"
+          name="keyword"
+          id="search"
+          placeholder="Search"
+          formControlName="keyword"
+        />
+
+        <i class="fa-thin fa-magnifying-glass" (click)="nav_to_search()"></i>
+   
       </form>
-      <div class="search_buton">
-        <button type="button" class="nav_btn" (click)="nav_to_search()">
-          Search
-        </button>
-      </div>
+    
     </div>
   </div>
   <div class="display_content">
