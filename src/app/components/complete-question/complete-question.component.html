@@ -34,7 +34,7 @@
       (commentMarkedTrue)="onCommentMarkedTrue()"
       [questionId]="questionId"
     ></app-comment>
-    <form class="form-group" [formGroup]="commentForm">
+    <form class="form-group" [formGroup]="commentForm" (keyup.enter)="addComment()">
       <div class="form-group">
         <textarea
           #comment
@@ -46,12 +46,5 @@
         ></textarea>
       </div>
     </form>
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      (click)="addComment()"
-    >
-      Comment
-    </button>
   </div>
 </div>
