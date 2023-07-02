@@ -18,6 +18,9 @@ export class LoginComponent implements AfterViewInit {
   @ViewChild("googleBtn", { read: ElementRef }) googleBtn: ElementRef | undefined;
   constructor(private http: HttpClient, private loginService: LoginService, private router: Router) { }
 
+
+  imagePath = 'assets/img/logo.jpg'
+
   ngAfterViewInit(): void {
     this.initializeGoogleSignIn();
   }
