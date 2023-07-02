@@ -70,7 +70,7 @@ export class CompleteQuestionComponent
       });
   }
   userEmail: string = "";
-  creationDate: String = "";
+  creationDate: string = "";
   isCorrect: boolean = false;
   addComment() {
     console.log("ADD comment triger");
