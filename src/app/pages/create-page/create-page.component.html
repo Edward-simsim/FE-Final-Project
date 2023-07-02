@@ -1,8 +1,7 @@
-<div class="container_box custom-font">
-
-  <div class="container_box">
-    <h2>Your Question</h2>
-    <form class="input_container" [formGroup]="questionForm">
+<div class="container_box">
+  <h2>Your Question</h2>
+  <div class="form_group">
+    <form [formGroup]="questionForm">
       <mat-form-field>
         <mat-label>Categories</mat-label>
         <mat-select id="select" formControlName="categoryIds" multiple>
@@ -14,19 +13,18 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-  
+
       <div class="create_input">
         <input
           type="text"
           id="title"
-          placeholder="Give this post a title" 
+          placeholder="Title"
           formControlName="title"
-        
         />
         <textarea
           class="description"
           id="description"
-          placeholder="Write your post here"
+          placeholder="Write your question here"
           formControlName="description"
         ></textarea>
       </div>
@@ -35,16 +33,9 @@
       <button type="button" class="cancel_btn" (click)="nav_back()">
         Cancel
       </button>
-      <button
-        type="button"
-        class="publish_btn"
-        (click)="addQuestion()"
-      >
+      <button type="button" class="publish_btn" (click)="addQuestion()">
         Publish
       </button>
     </div>
   </div>
-  
-
-
 </div>

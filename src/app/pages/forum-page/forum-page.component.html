@@ -1,4 +1,4 @@
-<div  class="container_box">
+<div class="container_box">
   <div class="content_up_nav">
     <div class="content_up_buttons">
       <div class="btn_left">
@@ -16,7 +16,8 @@
           type="button"
           class="nav_btn"
           [class.active]="activeButtonId === 'allPosts'"
-          (click)="showAllPosts()"x
+          (click)="showAllPosts()"
+          x
         >
           All posts
         </button>
@@ -31,23 +32,14 @@
           My posts
         </button>
       </div>
-      <div class="btn_right">
-        <button  id="createPost" 
-        type="button" 
-        class="nav_btn" 
-        (click)="nav_to_create()"
-        >
-          Create post
-        </button>
-      </div>
+   
     </div>
 
     <div class="content_img">
       <p class="content_img_big">Questions And Answers</p>
     </div>
     <div class="create_button_container">
-      <form class="input_container" [formGroup]="searchForm">
-
+      <form class="input_container" [formGroup]="searchForm"  (keyup.enter)="nav_to_search()">
         <mat-form-field>
           <mat-label>Categories</mat-label>
           <mat-select id="select" formControlName="categoryIds" multiple>
@@ -67,11 +59,15 @@
           placeholder="Search"
           formControlName="keyword"
         />
-
-        <i class="fa-thin fa-magnifying-glass" (click)="nav_to_search()"></i>
-   
       </form>
-    
+      <button
+      id="createPost"
+      type="button"
+      class="nav_btn"
+      (click)="nav_to_create()"
+    >
+      Create post
+    </button>
     </div>
   </div>
   <div class="display_content">
@@ -116,4 +112,3 @@
     </ng-template>
   </div>
 </div>
-

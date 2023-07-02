@@ -3,7 +3,7 @@
   <div class="comment_content">
     <p class="text">{{ comment.text }}</p>
     <p>{{ comment.userEmail }}</p>
-        <p>{{comment.creationDate}} </p>
+    <p>{{ comment.creationDate | slice:0:10 }}</p>
   </div>
   <div class="like_container">
     <div class="like">
