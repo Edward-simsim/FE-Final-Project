@@ -104,6 +104,7 @@
             *ngFor="let question of visibleQuestions"
             [question]="question"
             (newGetArticleEvent)="getQuestions()"
+            
           ></app-question>
           <button
             id="load_more"
