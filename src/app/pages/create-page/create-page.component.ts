@@ -21,9 +21,9 @@ export class CreatePageComponent implements OnInit {
   ) {}
 
   categories = [
-    { value: 1, viewValue: "One" },
-    { value: 2, viewValue: "Two" },
-    { value: 3, viewValue: "Three" },
+    { value: 1, viewValue: "Frontend" },
+    { value: 2, viewValue: "Backend" },
+    { value: 3, viewValue: "HR" },
   ];
 
   ngOnInit() {
