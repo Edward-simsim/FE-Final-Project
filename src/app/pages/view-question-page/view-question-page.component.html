@@ -3,5 +3,6 @@
     [completeQuestion]="question"
     [questionId]="questionId"
     (commentMarkedTrue)="refreshQuestionData()"
+    [categoryNames]="question.categoryNames ? question.categoryNames : []"
   ></app-complete-question>
 </div>

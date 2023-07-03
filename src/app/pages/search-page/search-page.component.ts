@@ -30,7 +30,17 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private questionService: QuestionService
     
   ) {}
-
+  categoryIds = [
+    { value: 1, viewValue: "Frontend" },
+    { value: 2, viewValue: "Backend" },
+    { value: 3, viewValue: "HR" },
+  ];
+ getCategoryNamesByIds(categoryIds: number[]): string[] {
+    return categoryIds.map((categoryId) => {
+      const category = this.categoryIds.find((cat) => cat.value === categoryId);
+      return category ? category.viewValue : "";
+    });
+  }
   ngOnInit(): void {
     this.questionId = Number(this.route.snapshot.paramMap.get("id"));
     this.activatedRoute.queryParams.subscribe(params => {
