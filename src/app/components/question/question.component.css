@@ -87,9 +87,11 @@ i {
   color:#112D4E;
   font-size: larger;
   font-size: 18px;
+  font-weight: bold;
+  
 }
 
-.question_container .questionC_up .user_category {
+.question_container .questionC_up .user_date {
   display: flex;
   justify-content: space-between;
   font-family: 'Lora', serif;
@@ -106,6 +108,7 @@ i {
   font-family: 'Lora', serif;
   color:#112D4E;
   font-size: 18px;
+  margin: 4px;
 }
 
 
