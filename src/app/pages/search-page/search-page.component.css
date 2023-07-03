@@ -1,6 +1,6 @@
 .container_box {
   padding-top: 40px;
-  width: 1400px;
+  width: 100%;
   align-items: center;
   margin: auto;
   display: flex;
@@ -17,9 +17,18 @@ align-items: center;
 .btn_container {
   width: 100%;
   margin-top: 20px;
-  margin-left: 250px;
-  
+ display: flex;
+ justify-content: end;
 }
-button {
-    width: 150px;
+.nav_button {
+  width: 130px;
+  height: 33px;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Lora", serif;
+  background-color: #f9f7f7;
+  color: #112d4e;
+  border: 1px solid #112d4e;
+  border-radius: 5px;
 }

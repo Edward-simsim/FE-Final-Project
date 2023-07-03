@@ -9,4 +9,5 @@ export class Question {
   email: string = "";
   solved: boolean = false;
   categoryIds: number[] = [];
+  categoryNames?: string[];
 }

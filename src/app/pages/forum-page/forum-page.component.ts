@@ -34,9 +34,9 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   selectedSearchCategories: number[] = [];
   searchForm!: FormGroup;
   categoryIds = [
-    { value: 1, viewValue: "One" },
-    { value: 2, viewValue: "Two" },
-    { value: 3, viewValue: "Three" },
+    { value: 1, viewValue: "Frontend" },
+    { value: 2, viewValue: "Backend" },
+    { value: 3, viewValue: "HR" },
   ];
 
   isCategory = false;
@@ -56,6 +56,15 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   questionUserEmail: string = "test1@gmail";
   activeButtonId: string = "";
 
+
+  getCategoryNamesByIds(categoryIds: number[]): string[] {
+    return categoryIds.map(categoryId => {
+        const category = this.categoryIds.find(cat => cat.value === categoryId);
+        return category ? category.viewValue : '';
+    });
+}
+
+  
   ngOnInit(): void {
     
     this.createSearchForm();
@@ -115,14 +124,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.categoryList = [];
     this.getMyPosts();
   }
-  getMyPosts() {
-    console.log("getMyPosts : " + this.questionMyPostsList);
-    this.questionSubscription = this.questionService
-      .getQuestionsByUserEmail()
-      .subscribe((questionsMy: Question[]) => {
-        this.questionMyPostsList = questionsMy;
-      });
-  }
+
   getCategory() {
     this.categorySubscription = this.categoryService
       .getCategorys()
@@ -134,19 +136,39 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionSubscription = this.questionService
       .get5Questions(n)
       .subscribe((questions5: Question[]) => {
-        this.questionList = questions5;
+        this.questionList = questions5.map(question => {
+          return {
+            ...question ,
+          categoryName:this.getCategoryNamesByIds(question.categoryIds)
+          }
+        });
       });
   }
-
+  getMyPosts() {
+    console.log("getMyPosts : " + this.questionMyPostsList);
+    this.questionSubscription = this.questionService
+      .getQuestionsByUserEmail()
+      .subscribe((questionsMy: Question[]) => {
+        this.questionMyPostsList = questionsMy.map(question => {
+          return {
+            ...question, categoryNames: this.getCategoryNamesByIds(question.categoryIds)
+          }
+        });
+      });
+  }
   getQuestions() {
     this.questionSubscription = this.questionService
       .getQuestions()
       .subscribe((questions: Question[]) => {
-        console.log("Questions:", questions);
-        this.questionList = questions;
-        console.log("questionList(forum.ts) " + questions);
+
+        this.questionList = questions.map(question => {
+          return {
+            ...question,
+            categoryNames: this.getCategoryNamesByIds(question.categoryIds)
+          }
+        });
         this.loadVisibleQuestions();
-        console.log("visibleQuestions(forum.ts) " + questions);
+   
       });
   }
 
