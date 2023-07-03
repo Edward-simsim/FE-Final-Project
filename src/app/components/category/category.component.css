@@ -12,6 +12,9 @@
 }
 .category_text {
   width: 340px;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 18px;
 }
 h3 {
   font-size: 20px;
@@ -19,7 +22,7 @@ h3 {
 }
 p {
   font-size: 18px;
-  margin: 6px;
+  /* margin: 6px; */
 }
 i {
   display: flex;
