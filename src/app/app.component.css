@@ -30,9 +30,11 @@ img {
 .nav_buttons {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  /* align-items: baseline; */
+  align-items: center;
+  justify-content: center; 
   margin-right: 50px;
-
+  flex-grow: 1; 
 }
 
 .nav_button {
