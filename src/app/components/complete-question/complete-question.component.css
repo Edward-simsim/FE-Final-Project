@@ -1,6 +1,5 @@
 .completeQuestion_container {
-  
- width: 1200px;
+  width: 1200px;
   margin: auto;
   padding: 10px 30px;
   border: 3px solid  #DBE2EF;
@@ -12,39 +11,40 @@
 }
 
 .completeQuestionC_up {
-  width: 850px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 10px;
+  /* margin: 4px; */
+  margin: 20px 4px;
 }
 .name_date {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  font-family: 'Lora', serif;
+  color:#112D4E;
+  font-size: 18px;
 }
 .completeQuestion_title {
   font-size: 30px;
   display: flex;
   justify-content: center;
+  font-family: 'Lora', serif;
+  color:#112D4E;
 }
 .completeQuestion_category {
-  padding-left: 20px;
-  margin: 10px 0;
+  /* padding-left: 20px;
+  margin: 4px; */
 }
 .completeQuestion_description {
-  margin-top: 8px;
-  padding: 4px;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  overflow: hidden;
+  text-align: left;
+  font-family: 'Lora', serif;
+  color:#112D4E;
+  font-size: 18px;
 }
 
-
-
 p {
-  margin: 4px;
+  /* margin: 4px; */
 }
 
 .completeQuestionC_down {
@@ -53,23 +53,8 @@ p {
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  margin: 20px;
 }
 
-.like {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  color: gray;
-  cursor: pointer;
-  transition: color 0.2s;
-  padding-right: 30px;
-}
-
-.like:hover {
-  color: #ff6b6b;
-}
 
 .right {
   width: 100px;
@@ -92,19 +77,34 @@ i {
   font-weight: 900;
 }
 .comments_container {
+
   display: flex;
   flex-direction: column;
-
   width: 100%;
   height: 100%;
+  text-align: left;
+  justify-content: flex-start;
+  margin: 20px 4px;
 }
 textarea {
   overflow: hidden;
   min-height: 20px;
   resize: none; 
-  border-color: black;
+  border: 3px solid  #DBE2EF;
 }
 
 textarea:active, textarea:focus {
   outline: none;
+}
+textarea::placeholder{
+  font-family: 'Lora', serif;
+  color:#112D4E;
+  font-size: 18px;
+}
+
+.completeQuestion_category,
+.completeQuestion_title,
+.completeQuestion_description,
+textarea {
+  margin-bottom: 20px; 
 }

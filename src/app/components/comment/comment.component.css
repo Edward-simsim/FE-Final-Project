@@ -3,43 +3,32 @@
   flex-direction: column;
   align-items: end;
   border: 3px solid  #DBE2EF;
-background-color: white;
+  background-color: white;
   border-radius: 5px;
   margin: 6px 0;
   padding: 3px 10px;
 }
 .comment_content {
   width: 100%;
-
   display: flex;
   justify-content: space-between;
-  margin: 6px 0;
-  padding: 3px 10px;
+  /* margin: 6px 0;
+  padding: 3px 10px; */
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-break: break-word;
   overflow: hidden;
   align-items: end;
+  font-family: 'Lora', serif;
+  color:#112D4E;
+  font-size: 18px;
+  /* margin: 20px 4px; */
+  padding: 3px 10px;;
 }
-.like_container {
-  width: 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-}
-.like {
-    width: 50px;
-    display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-}
+
 p {
   margin: 0;
 }
 .green {
-  color: rgb(4, 206, 4);
+ fill: green;
 }
