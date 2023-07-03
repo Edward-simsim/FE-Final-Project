@@ -56,17 +56,14 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   questionUserEmail: string = "test1@gmail";
   activeButtonId: string = "";
 
-
   getCategoryNamesByIds(categoryIds: number[]): string[] {
-    return categoryIds.map(categoryId => {
-        const category = this.categoryIds.find(cat => cat.value === categoryId);
-        return category ? category.viewValue : '';
+    return categoryIds.map((categoryId) => {
+      const category = this.categoryIds.find((cat) => cat.value === categoryId);
+      return category ? category.viewValue : "";
     });
-}
+  }
 
-  
   ngOnInit(): void {
-    
     this.createSearchForm();
     this.activatedRoute.queryParams.subscribe((params) => {
       if (params["myPosts"]) {
@@ -85,7 +82,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     console.log("createSearchForm : ");
     this.showCategory();
   }
- 
+
   createSearchForm() {
     this.searchForm = this.formBuilder.group({
       categoryIds: [[]],
@@ -136,11 +133,11 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionSubscription = this.questionService
       .get5Questions(n)
       .subscribe((questions5: Question[]) => {
-        this.questionList = questions5.map(question => {
+        this.questionList = questions5.map((question) => {
           return {
-            ...question ,
-          categoryName:this.getCategoryNamesByIds(question.categoryIds)
-          }
+            ...question,
+            categoryName: this.getCategoryNamesByIds(question.categoryIds),
+          };
         });
       });
   }
@@ -149,10 +146,11 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionSubscription = this.questionService
       .getQuestionsByUserEmail()
       .subscribe((questionsMy: Question[]) => {
-        this.questionMyPostsList = questionsMy.map(question => {
+        this.questionMyPostsList = questionsMy.map((question) => {
           return {
-            ...question, categoryNames: this.getCategoryNamesByIds(question.categoryIds)
-          }
+            ...question,
+            categoryNames: this.getCategoryNamesByIds(question.categoryIds),
+          };
         });
       });
   }
@@ -160,15 +158,13 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.questionSubscription = this.questionService
       .getQuestions()
       .subscribe((questions: Question[]) => {
-
-        this.questionList = questions.map(question => {
+        this.questionList = questions.map((question) => {
           return {
             ...question,
-            categoryNames: this.getCategoryNamesByIds(question.categoryIds)
-          }
+            categoryNames: this.getCategoryNamesByIds(question.categoryIds),
+          };
         });
         this.loadVisibleQuestions();
-   
       });
   }
 

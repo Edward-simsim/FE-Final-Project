@@ -15,6 +15,7 @@ export class QuestionComponent {
   ) {}
 
   @Input() question: Question = new Question();
+  @Input() categoryNames?: string[]=[];
  
 
   truncateText(text: string, maxRows: number, maxCharacters: number): string {
