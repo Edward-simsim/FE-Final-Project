@@ -4,6 +4,7 @@
     <p *ngIf="question.solved">Solved</p>
     <div class="user_date">
       <p class="question_user">{{ question.email }}</p>
+      <p class="completeQuestion_date">{{ question.creationDate }}</p>
     </div>
     <p class="question_category">{{ question.categoryNames }}{{ categoryNames?.join(', ') }}</p>
     
