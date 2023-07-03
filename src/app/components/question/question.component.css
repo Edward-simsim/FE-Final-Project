@@ -47,19 +47,6 @@ p {
   flex-direction: row;
 }
 
-.like {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: gray;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.like:hover {
-  color: #ff6b6b;
-}
-
 .right {
   width: 100px;
   justify-content: space-between;
@@ -105,10 +92,11 @@ i {
   margin-left: 0;
   padding-left: 0;
   margin-top: 20px;
+  margin: 4px;
   font-family: 'Lora', serif;
   color:#112D4E;
   font-size: 18px;
-  margin: 4px;
+  
 }
 
 

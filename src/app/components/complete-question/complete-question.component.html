@@ -3,13 +3,13 @@
   <div class="completeQuestionC_up">
     <div class="name_date">
       <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
-      <p class="completeQuestion_date">{{ completeQuestion.creationDate }}</p>
+      <p class="completeQuestion_date">1.02.2023</p>
       <p *ngIf="completeQuestion.solved">Solved</p> <!--TODO-->
     </div>
     <div class="completeQuestion_category">
-      <p>{{ completeQuestion.categoryIds }}</p>
+      <!-- <p>{{ completeQuestion.category }}</p> -->
+    <p>Java</p>
     </div>
-
     <div class="completeQuestion_title">
       <p>{{ completeQuestion.title }}</p>
     </div>
@@ -18,13 +18,13 @@
     </div>
   </div>
 
-  <div class="completeQuestionC_down">
+  <!-- <div class="completeQuestionC_down">
     <div class="like">
       <i class="fa-regular fa-thumbs-up"></i>
       <p>like</p>
     </div>
   
-  </div>
+  </div> -->
   <div class="comments_container">
     <app-comment
       *ngFor="let comment of commentList"
