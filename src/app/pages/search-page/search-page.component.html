@@ -14,6 +14,7 @@
       [question]="question"
       questionId="questionId"
       (newGetArticleEvent)="getSearchQuestions()"
+      [categoryNames]="getCategoryNamesByIds(question.categoryIds)"
     ></app-question>
   
   </div>

@@ -91,11 +91,7 @@
         [category]="category"
         (newGetArticleEvent)="getCategory()"
       ></app-category>
-      <app-question
-        *ngFor="let question of questionList"
-        [question]="question"
-        (newGetArticleEvent)="get5Questions(n)"
-      ></app-question>
+    
     </ng-container>
     <ng-template #allPostsBlock>
       <ng-container *ngIf="isAllPosts; else myPostsBlock">
@@ -104,6 +100,7 @@
             *ngFor="let question of visibleQuestions"
             [question]="question"
             (newGetArticleEvent)="getQuestions()"
+            
           ></app-question>
           <button
             id="load_more"

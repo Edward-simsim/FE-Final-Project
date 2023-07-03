@@ -22,6 +22,8 @@ export class CompleteQuestionComponent
   @Input() questionId: number = 0;
   @Input() question: Question = new Question();
   @Output()commentMarkedTrue:EventEmitter<any> =  new EventEmitter();
+  @Input() categoryNames: string[]=[];
+
   questionSubscription: Subscription = new Subscription();
   commentSubscription: Subscription = new Subscription();
   commentList: Comment[] = [];
