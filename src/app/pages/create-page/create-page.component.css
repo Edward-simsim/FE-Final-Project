@@ -38,11 +38,11 @@ form {
 input {
   border: none;
   outline: none;
-  margin-bottom: 5px;
   background-color: #f9f7f7;
   font-family: "Lora", serif;
   color: #112d4e;
   font-size: 18px;
+  padding-left: 25px;
 }
 .create_input {
   display: flex;
@@ -55,6 +55,7 @@ textarea {
   font-family: "Lora", serif;
   color: #112d4e;
   font-size: 18px;
+  width: 100%;
 }
 .create_input input::placeholder {
   font-family: "Lora", serif;
@@ -178,4 +179,12 @@ div.mat-mdc-select-arrow svg:first-child {
   border: 1px solid #112d4e;
   border-radius: 5px;
   margin-left: 5px;
+}
+svg {
+  height:25px ;
+  width:25px ;
+}
+.micropohone {
+  display: flex;
+  width: 100%;
 }

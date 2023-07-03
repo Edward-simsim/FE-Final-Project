@@ -1,13 +1,13 @@
 .completeQuestion_container {
   width: 1200px;
   margin: auto;
-  padding: 10px 30px;
-  border: 3px solid  #DBE2EF;
+  padding: 30px 30px;
+  border: 3px solid #dbe2ef;
   border-radius: 5px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color:#F9F7F7 ;
+  background-color: #f9f7f7;
 }
 
 .completeQuestionC_up {
@@ -16,45 +16,44 @@
   flex-direction: column;
   justify-content: flex-start;
   /* margin: 4px; */
-  margin: 20px 4px;
+  margin: 0 4px;
 }
 .name_date {
   display: flex;
   justify-content: space-between;
-  font-family: 'Lora', serif;
-  color:#112D4E;
+  font-family: "Lora", serif;
+  color: #112d4e;
   font-size: 18px;
+  align-items: baseline;
 }
 .completeQuestion_title {
   font-size: 30px;
   display: flex;
   justify-content: center;
-  font-family: 'Lora', serif;
-  color:#112D4E;
+  font-family: "Lora", serif;
+  color: #112d4e;
 }
 .completeQuestion_category {
-  /* padding-left: 20px;
-  margin: 4px; */
+  margin: 4px;
 }
 .completeQuestion_description {
   text-align: left;
-  font-family: 'Lora', serif;
-  color:#112D4E;
+  font-family: "Lora", serif;
+  color: #112d4e;
   font-size: 18px;
-}
-
-p {
-  /* margin: 4px; */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .completeQuestionC_down {
-  border-bottom: 3px solid #DBE2EF;
+  border-bottom: 3px solid #dbe2ef;
   width: 100%;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
-
 
 .right {
   width: 100px;
@@ -77,7 +76,6 @@ i {
   font-weight: 900;
 }
 .comments_container {
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -89,22 +87,50 @@ i {
 textarea {
   overflow: hidden;
   min-height: 20px;
-  resize: none; 
-  border: 3px solid  #DBE2EF;
+  resize: none;
+  border: 3px solid #dbe2ef;
 }
 
-textarea:active, textarea:focus {
+textarea:active,
+textarea:focus {
   outline: none;
 }
-textarea::placeholder{
-  font-family: 'Lora', serif;
-  color:#112D4E;
+textarea::placeholder {
+  font-family: "Lora", serif;
+  color: #112d4e;
   font-size: 18px;
 }
 
 .completeQuestion_category,
-.completeQuestion_title,
 .completeQuestion_description,
 textarea {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 18px;
+}
+.completeQuestion_title {
+  margin-bottom: 20px;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 30px;
+}
+.completeQuestion_category {
+  font-size: 15px;
+}
+.name_date_content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-right: 14px;
+  margin-bottom: 20px;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 18px;
+  margin: 0;
+}
+svg {
+  fill: rgb(0, 173, 0);
+  width: 30px;
+  height: 30px;
 }

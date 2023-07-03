@@ -1,29 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <div class="question_container" (click)="navclick()">
   <div class="questionC_up">
-    <p *ngIf="question.solved">Solved</p>
     <div class="user_date">
-      <p class="question_user">{{ question.email }}</p>
-      <p class="completeQuestion_date">{{ question.creationDate }}</p>
+      <div class="user_date_content">
+        <p class="question_user">{{ question.email }}</p>
+        <p class="completeQuestion_date">2023-07-02</p>
+      </div>
+      <svg
+        *ngIf="question.solved"
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+      >
+        <path
+          d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+        />
+      </svg>
     </div>
-    <p class="question_category">{{ question.categoryNames }}{{ categoryNames?.join(', ') }}</p>
-    
+    <p class="question_category">
+      {{ question.categoryNames }}{{ categoryNames?.join(", ") }}
+    </p>
+
     <p class="question_title">{{ question.title }}</p>
-   
-   
+
     <div class="question_description">
-      {{ truncateText(question.description, 4, 380) }}
+      <p>{{ truncateText(question.description, 4, 380) }}</p>
     </div>
   </div>
   <hr />
-  <div class="questionC_down">
-     <div class="like"> 
-      <!-- <i class="fa-regular fa-thumbs-up"></i>
-      <p>like</p>  -->
-    </div> 
-    <div class="right">
-      <!-- <i class="fa-regular fa-message"><p>2</p></i
-      ><i class="fa-solid fa-eye"><p>3</p></i> -->
-    </div>
-  </div>
 </div>
