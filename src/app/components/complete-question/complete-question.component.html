@@ -2,48 +2,58 @@
 <div class="completeQuestion_container">
   <div class="completeQuestionC_up">
     <div class="name_date">
-      <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
-      <p class="completeQuestion_date">{{ completeQuestion.creationDate }}</p>
-      <p *ngIf="completeQuestion.solved">Solved</p>
+      <div class="icon"></div>
+      <div class="name_date_content">
+        <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
+        <p class="completeQuestion_date">2023-07-02</p>
+      </div>
+      <svg
+        *ngIf="completeQuestion.solved"
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+      >
+        <path
+          d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+        />
+      </svg>
     </div>
     <div class="completeQuestion_category">
-      <p class="question_category">{{ question.categoryNames }}</p>
-      <p class="question_category">{{ categoryNames }}</p>
-    <div class="completeQuestion_title">
-      <p>{{ completeQuestion.title }}</p>
-    </div>
-    <div class="completeQuestion_description">
-      {{ completeQuestion.description }}
-    </div>
-  </div>
-
-  <!-- <div class="completeQuestionC_down">
-    <div class="like">
-      <i class="fa-regular fa-thumbs-up"></i>
-      <p>like</p>
-    </div>
-  
-  </div> -->
-  <div class="comments_container">
-    <app-comment
-      *ngFor="let comment of commentList"
-      [comment]="comment"
-      (commentMarkedTrue)="getComments()"
-      (newGetArticleEvent)="getComments()"
-      (commentMarkedTrue)="onCommentMarkedTrue()"
-      [questionId]="questionId"
-    ></app-comment>
-    <form class="form-group" [formGroup]="commentForm" (keyup.enter)="addComment()">
-      <div class="form-group">
-        <textarea
-          #comment
-          class="form-control"
-          id="comment"
-          rows="3"
-          placeholder="comment"
-          formControlName="text"
-        ></textarea>
+      <p class="question_category">
+        {{ question.categoryNames }}{{ categoryNames }}
+      </p>
+      <div class="completeQuestion_title">
+        <p>{{ completeQuestion.title }}</p>
       </div>
-    </form>
+      <div class="completeQuestion_description">
+        <p>{{ completeQuestion.description }}</p>
+      </div>
+    </div>
+    <div class="comments_container">
+      <app-comment
+        *ngFor="let comment of commentList"
+        [comment]="comment"
+        (commentMarkedTrue)="getComments()"
+        (newGetArticleEvent)="getComments()"
+        (commentMarkedTrue)="onCommentMarkedTrue()"
+        [questionId]="questionId"
+      ></app-comment>
+      <form
+        class="form-group"
+        [formGroup]="commentForm"
+        (keyup.enter)="addComment()"
+      >
+        <div class="form-group">
+          <textarea
+            #comment
+            class="form-control"
+            id="comment"
+            rows="3"
+            placeholder="comment"
+            formControlName="text"
+          ></textarea>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

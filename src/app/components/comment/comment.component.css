@@ -1,12 +1,11 @@
 .comment_container {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  border: 3px solid  #DBE2EF;
+  border: 3px solid #dbe2ef;
   background-color: white;
   border-radius: 5px;
   margin: 6px 0;
-  padding: 3px 10px;
+  padding: 12px;
 }
 .comment_content {
   width: 100%;
@@ -18,17 +17,37 @@
   overflow-wrap: break-word;
   word-break: break-word;
   overflow: hidden;
-  align-items: end;
-  font-family: 'Lora', serif;
-  color:#112D4E;
-  font-size: 18px;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 16px;
   /* margin: 20px 4px; */
-  padding: 3px 10px;;
 }
 
-p {
-  margin: 0;
+.comment_content p {
+  margin-top: 0;
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 14px;
+}
+.comment_text p {
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 18px;
 }
 .green {
- fill: green;
+  fill: rgb(0, 173, 0);
+}
+.comment_text {
+  align-items: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+}
+svg{
+  width: 20px;
+  height: 20px;
 }
