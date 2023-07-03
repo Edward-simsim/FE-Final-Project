@@ -12,7 +12,7 @@ export class CategoryService {
 
   getCategorys(): Observable<Category[]> {
     console.log("service");
-    return this.http.get<Category[]>('http://localhost:8080/api/v1/categories')
+    return this.http.get<Category[]>('https://skills-overflow.ew.r.appspot.com/api/v1/categories')
 
   }
 }
