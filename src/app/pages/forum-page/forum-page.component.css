@@ -155,7 +155,7 @@ mat-form-field {
   width: 400px;
   font-size: 20px;
   background-color: #f9f7f7;
-  height: 34px;
+  height: 35px;
   font-size: 20px;
   font-family: "Lora", serif;
   color: #112d4e;
@@ -223,4 +223,12 @@ div.mat-mdc-select-arrow svg:first-child {
 #createPost {
   height: 39px;
   border-bottom: 2px solid #112d4e;
+}
+.input_icon {
+  position: relative;
+}
+.input_icon svg {
+  position: absolute;
+  top:11px;
+  right: 10px;
 }
