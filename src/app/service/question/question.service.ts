@@ -16,6 +16,7 @@ export class QuestionService {
   constructor(private http: HttpClient, private loginService: LoginService) {
     this.loginService.getToken().subscribe((token) => {
       this.token = token;
+      console.log("Question service",token);
     });
   }
   getQuestions(): Observable<Question[]> {
