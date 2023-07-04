@@ -147,7 +147,7 @@ export class CommentService {
   }
 
   markCommentAsSolved(commentId: number, token: string): Observable<any> {
-    const url = `${BASE_URL}comments/${commentId}/solved`;
+    const url = `https://skills-overflow.ew.r.appspot.com/api/v1/comments/${commentId}/solved`;
     const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     const options = { headers: headers };
 
@@ -169,7 +169,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../../models/category';
-import { BASE_URL } from "src/service-local";
 
 @Injectable({
   providedIn: 'root'

@@ -38,6 +38,6 @@ export class AppComponent {
     this.router.navigate(["members"]);
   }
   isRootUrl(): boolean {
-    return window.location.href !== 'https://localhost:4200/';
+    return window.location.href !== 'https://skills-overflow.vercel.app/';
   }
 }

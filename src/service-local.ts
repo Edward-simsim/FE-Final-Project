@@ -1,1 +1,0 @@
-export const BASE_URL = "https://skills-overflow.ew.r.appspot.com/api/v1/"

@@ -12,17 +12,6 @@ export class LoginService {
     return this.isLoggedInSubject.asObservable();
   }
 
-  constructor (){
-    const token = localStorage.getItem('token'); //extrage prop token din localStorage
-    // console.log(token);
-    // console.log("token");
-    if(token){
-      this.isLoggedInSubject.next(true);
-      this.tokenSubject.next(token);
-    }
-    
-  }
-
   userHasLoggedIn(token: string): void {
     localStorage.setItem('token', token);
     this.isLoggedInSubject.next(true);
