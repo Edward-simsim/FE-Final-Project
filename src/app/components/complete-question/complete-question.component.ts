@@ -28,6 +28,10 @@ export class CompleteQuestionComponent
   commentSubscription: Subscription = new Subscription();
   commentList: Comment[] = [];
   commentForm!: FormGroup;
+  userEmail: string = "";
+  creationDate: string = "";
+  isCorrect: boolean = false;
+
   createForm() {
     this.commentForm = this.formBuilder.group({
       text: [""],
@@ -71,21 +75,18 @@ export class CompleteQuestionComponent
         this.commentList = comments;
       });
   }
-  userEmail: string = "";
-  creationDate: string = "";
-  isCorrect: boolean = false;
+
   addComment() {
     console.log("ADD comment triger");
     const comment: Comment = {
       isCorrect: this.isCorrect,
       userEmail: this.userEmail,
-      creationDate: this.creationDate,
+      localDateTime: this.creationDate,
       text: this.commentForm.value.text || "",
       questionId: this.questionId,
     };
     const commentText: string = this.commentForm.value.text.trim();
-    if (commentText.length < 10) {
-      alert("Please enter at least 10 characters for the comment.");
+    if (commentText.length < 4) {
       return;
     }
     this.commentService.addComment(comment).subscribe(
@@ -96,9 +97,6 @@ export class CompleteQuestionComponent
       (error) => {
         console.log("Error adding comment", error);
       }
-    );
-    console.log(
-      "Press addComment : " + comment.text + "  " + comment.questionId
     );
     this.commentForm.reset();
   }

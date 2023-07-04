@@ -5,9 +5,10 @@ export class Question {
   id?: number;
   title: string = "";
   description: string = "";
-  creationDate: string = "";
+  localDateTime: string = "";
   email: string = "";
   solved: boolean = false;
   categoryIds: number[] = [];
   categoryNames?: string[];
+  noOfComments?: number;
 }

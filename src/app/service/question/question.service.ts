@@ -18,10 +18,9 @@ export class QuestionService {
       this.token = token;
     });
   }
-
   getQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(
-      "http://localhost:8080/api/v1/questions/all"
+    return this.http.get<Question[]>("http://localhost:8080/api/v1/questions/all").pipe(
+      map((questions: Question[]) => questions.reverse())
     );
   }
   get5Questions(n: number): Observable<Question[]> {
@@ -100,6 +99,7 @@ export class QuestionService {
     );
   }
   uploadAudioFile(file: File) {
+    console.log("Type of file: " + file.type);
     const formData = new FormData();
     formData.append('file', file, 'recorded_audio.flac');
     

@@ -38,7 +38,10 @@ export class CreatePageComponent implements OnInit {
   categories = [
     { value: 1, viewValue: "Frontend" },
     { value: 2, viewValue: "Backend" },
-    { value: 3, viewValue: "HR" },
+    { value: 4, viewValue: "Soft skills" },
+    { value: 5, viewValue: "QA testing" },
+    { value: 6, viewValue: "Database" },
+    { value: 7, viewValue: "DevOps" },
   ];
   sanitize(url: string) {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
@@ -79,12 +82,7 @@ processRecording(blob: Blob) {
   
   descritioAudio :string=''
   uploadAudio(blob: Blob) {
-    const downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = 'recorded_audio.flac';
-    downloadLink.innerText = 'Download Recorded Audio';
-    document.body.appendChild(downloadLink);
-      const file = new File([blob], 'recorded_audio.flac', { type: 'audio/flac' });
+      const file = new File([blob], 'recorded_audio.flac', { type: 'flac' });
       console.log("audioType: " + file.type +file);
     this.questionService.uploadAudioFile(file).subscribe((response) => {
       console.log(response);
@@ -133,9 +131,14 @@ processRecording(blob: Blob) {
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
       email: this.questionForm.value.email || "",
-      creationDate: this.questionForm.value.date || "",
+      localDateTime: this.questionForm.value.date || "",
       solved: this.isSolved,
     };
+    if (this.title.length < 4) {
+      return;
+    }
+    
+    
     console.log("Question Category:", question.categoryIds);
     this.questionService.addQuestion(question).subscribe(() => {
       this.navigateToForum();

@@ -102,8 +102,21 @@ i {
   width: 100%;
   padding-right: 10px;
 }
-svg {
+.user_date svg {
   fill: rgb(0, 173, 0);
   width: 25px;
   height: 25px;
+}
+.question_category_coments {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.comment_icon {
+  display: flex;
+  align-items: center;
+}
+.comment_icon svg {
+  width: 16px;
+  height: 16px;
 }

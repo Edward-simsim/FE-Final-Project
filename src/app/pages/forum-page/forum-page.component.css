@@ -178,16 +178,16 @@ div.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c3673195382-0.mdc-text-fiel
   padding-top: 6px;
 }
 .create_button_container .search_buton button {
-  width: 150px !important;
+  width: 170px !important;
   height: 40px !important;
   padding-top: 4px;
 }
 .mat-mdc-form-field.ng-tns-c3673195382-0.mat-mdc-form-field-type-mat-select.mat-form-field-appearance-fill.mat-form-field-hide-placeholder.mat-primary.ng-pristine.ng-valid.ng-star-inserted.ng-touched {
-  width: 150px !important;
+  width: 170px !important;
   padding-top: 4px;
 }
 div.mat-mdc-text-field-wrapper {
-  width: 150px !important;
+  width: 170px !important;
   padding-top: 3px;
 }
 mat-form-field.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
@@ -196,14 +196,14 @@ mat-form-field.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
     padding-top: 4px;
 }
 mat-form-field.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
-  width: 150px !important;
+  width: 170px !important;
 }
 div.mat-mdc-select-arrow svg:first-child {
   top: 10px;
 }
 
 .display_content {
-  width: 800px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -5,7 +5,7 @@
       <div class="icon"></div>
       <div class="name_date_content">
         <p class="completeQuestion_user">{{ completeQuestion.email }}</p>
-        <p class="completeQuestion_date">2023-07-02</p>
+        <p class="completeQuestion_date">{{ completeQuestion.localDateTime | slice : 0 : 10 }} </p>
       </div>
       <svg
         *ngIf="completeQuestion.solved"
@@ -22,6 +22,7 @@
       <p class="question_category">
         {{ question.categoryNames }}{{ categoryNames }}
       </p>
+      <p>{{question.noOfComments}}</p>
       <div class="completeQuestion_title">
         <p>{{ completeQuestion.title }}</p>
       </div>
