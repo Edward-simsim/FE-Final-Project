@@ -3,7 +3,12 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { QuestionService } from "src/app/service/question/question.service";
 import { Question } from "src/app/models/question";
-
+import { DomSanitizer } from "@angular/platform-browser";
+import { HttpClient } from '@angular/common/http';
+import * as RecordRTC from "recordrtc";
+export interface Speech2TextResponseDTO {
+  transcript: string;
+}
 @Component({
   selector: "app-create-page",
   templateUrl: "./create-page.component.html",
@@ -13,19 +18,83 @@ import { Question } from "src/app/models/question";
 export class CreatePageComponent implements OnInit {
   selectedCategories: number[] = [];
   questionForm!: FormGroup;
-
+  title = "audio-record";
+  record: any;
+  recording = false;
+  url: any;
+  error: any;
   constructor(
+    private domSanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private questionService: QuestionService,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
   ) {}
+
+  private mediaRecorder: MediaRecorder | null = null;
+  private audioChunks = [];
+  private isRecording = false;
 
   categories = [
     { value: 1, viewValue: "Frontend" },
     { value: 2, viewValue: "Backend" },
     { value: 3, viewValue: "HR" },
   ];
+  sanitize(url: string) {
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
+  }
 
+  startRecording() {
+    this.recording=true;
+    let mediaConstrains = {
+      video:false,
+      audio:true,
+    };
+    navigator.mediaDevices
+    .getUserMedia(mediaConstrains)
+    .then(this.successCallBack.bind(this), this.errorCallBack.bind(this));
+  }
+ successCallBack(stream: MediaStream) {
+  var options: RecordRTC.Options = {
+    mimeType: 'audio/webm',
+    numberOfAudioChannels: 1,
+  };
+  var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
+  this.record = new StereoAudioRecorder(stream, options);
+  this.record.record();
+}
+
+stopRecording() {
+  this.recording = false;
+  this.record.stop(this.processRecording.bind(this));
+}
+processRecording(blob: Blob) {
+  this.url = URL.createObjectURL(blob);
+
+  this.uploadAudio(blob);
+}
+  errorCallBack(error:any) {
+    this.error='can not play';
+  }
+  
+  descritioAudio :string=''
+  uploadAudio(blob: Blob) {
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'recorded_audio.flac';
+    downloadLink.innerText = 'Download Recorded Audio';
+    document.body.appendChild(downloadLink);
+      const file = new File([blob], 'recorded_audio.flac', { type: 'audio/flac' });
+      console.log("audioType: " + file.type +file);
+    this.questionService.uploadAudioFile(file).subscribe((response) => {
+      console.log(response);
+      this.descritioAudio = response.transcript;
+    });
+  }
+
+  
+
+  
   ngOnInit() {
     this.createForm();
     const categoryControl = this.questionForm.get("category");
@@ -41,7 +110,6 @@ export class CreatePageComponent implements OnInit {
       categoryIds: [[]],
       title: [""],
       description: [""],
-     
     });
   }
 
@@ -61,22 +129,17 @@ export class CreatePageComponent implements OnInit {
     console.log("merge?");
     const selectedCategories = this.questionForm.value.categoryIds;
     const question: Question = {
-      categoryIds:selectedCategories || [],
+      categoryIds: selectedCategories || [],
       title: this.questionForm.value.title || "",
       description: this.questionForm.value.description || "",
       email: this.questionForm.value.email || "",
       creationDate: this.questionForm.value.date || "",
-      solved:this.isSolved
+      solved: this.isSolved,
     };
     console.log("Question Category:", question.categoryIds);
-    this.questionService
-      .addQuestion(
-        question
-      )
-      .subscribe(()=> {
-        this.navigateToForum();
-      });
-
+    this.questionService.addQuestion(question).subscribe(() => {
+      this.navigateToForum();
+    });
   }
 
   navigateToForum() {
