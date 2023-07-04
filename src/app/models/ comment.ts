@@ -8,5 +8,5 @@ export class Comment {
   text: string = "";
   isCorrect:boolean=false;
   // nrLikes: number = 0;
-  localDateTime:string = "";
+  creationDate:string = "";
 }

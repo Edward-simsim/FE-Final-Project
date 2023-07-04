@@ -81,7 +81,7 @@ export class CompleteQuestionComponent
     const comment: Comment = {
       isCorrect: this.isCorrect,
       userEmail: this.userEmail,
-      localDateTime: this.creationDate,
+      creationDate: this.creationDate,
       text: this.commentForm.value.text || "",
       questionId: this.questionId,
     };
