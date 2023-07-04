@@ -4,7 +4,9 @@ import { Observable } from "rxjs";
 import { Question } from "../../models/question";
 import { map, tap } from "rxjs/operators";
 import { LoginService } from "src/app/login/login.service";
-
+export interface Speech2TextResponseDTO {
+  transcript: string;
+}
 @Injectable({
   providedIn: "root",
 })
@@ -96,5 +98,11 @@ export class QuestionService {
       "http://localhost:8080/api/v1/questions/searchBy",
       { params, headers }
     );
+  }
+  uploadAudioFile(file: File) {
+    const formData = new FormData();
+    formData.append('file', file, 'recorded_audio.flac');
+    
+    return this.http.post<Speech2TextResponseDTO>('http://localhost:8080/api/v1/speech2text', formData);
   }
 }
