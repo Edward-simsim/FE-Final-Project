@@ -36,6 +36,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
   categoryIds = [
     { value: 1, viewValue: "Frontend" },
     { value: 2, viewValue: "Backend" },
+    { value: 3, viewValue: "HR" },
     { value: 4, viewValue: "Soft skills" },
     { value: 5, viewValue: "QA testing" },
     { value: 6, viewValue: "Database" },
