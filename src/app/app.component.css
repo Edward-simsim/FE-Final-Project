@@ -66,12 +66,38 @@ h2 {
   font-size: 40px;
   margin: 0;
 }
+/* footer {
+  margin-top: 40px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 30px;
+  font-family: "Lora", serif;
+  font-size: 25px;
+  color: #112d4e;
+  font-weight: bold;
+  height: 40px;
+}  */
+
 footer {
   margin-top: 40px;
   width: 100%;
   justify-content: center;
   display: flex;
   margin-bottom: 30px;
+}
+
+footer h4 {
+  font-family: "Lora", serif;
+  font-size: 25px;
+  color: #112d4e;
+  font-weight: bold;
+  height: 40px;
 }
 .nav_button.active {
   color:#3F72AF;
