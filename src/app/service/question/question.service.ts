@@ -68,7 +68,7 @@ export class QuestionService {
     };
 
     return this.http
-      .get<Question[]>(`http://localhost:8080/api/v1/questions/email`, httpOptions)
+      .get<Question[]>(`https://skills-overflow.ew.r.appspot.com/api/v1/questions/email`, httpOptions)
       .pipe(map((questions) => questions.reverse()));
   }
   
