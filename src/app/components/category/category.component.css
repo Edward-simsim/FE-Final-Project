@@ -35,3 +35,8 @@ i {
   align-items: center;
   margin-right: 20px;
 }
+.category_icons {
+  font-family: "Lora", serif;
+  color: #112d4e;
+  font-size: 18px;
+}
