@@ -100,7 +100,6 @@ i {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-right: 10px;
 }
 .user_date svg {
   fill: rgb(0, 173, 0);
@@ -111,6 +110,7 @@ i {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  padding-right: 14px;
 }
 .comment_icon {
   display: flex;
@@ -119,4 +119,8 @@ i {
 .comment_icon svg {
   width: 16px;
   height: 16px;
+}
+.question_category {
+   font-family: "Lora", serif;
+  color: #112d4e;
 }
